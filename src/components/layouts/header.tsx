@@ -23,13 +23,15 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import Link from "next/link";
-import { GITHUB_URL, SWR_CONFIG } from "@/lib/constants";
+import { GITHUB_URL, SITE_NAME, SWR_CONFIG } from "@/lib/constants";
 import { Badge } from "../app-ui/Badge";
 import { Series } from "../app-ui/Series";
 import { Button } from "../app-ui/Button";
 import { Ping } from "../app-ui/Ping";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetchers";
+import { ThemeSwitcher } from "../app-ui/ThemeSwitcher";
+import { Logo } from "../app-ui/Logo";
 
 export const Header = () => {
   const [isNavOpen, setNavOpen] = useState(false);
@@ -70,7 +72,28 @@ export const Header = () => {
         <span className="sr-only">Toggle navigation</span>
       </button>
 
-      <Breadcrumb className="mr-auto" />
+      <ol
+        itemScope
+        itemType="https://schema.org/BreadcrumbList"
+        className={cn("mr-auto flex items-center gap-2.5")}
+      >
+        <li
+          className={cn("group contents")}
+          itemProp="itemListElement"
+          itemScope
+          itemType="https://schema.org/ListItem"
+        >
+          <Link
+            href="/"
+            itemProp="item"
+            className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm font-medium -tracking-micro text-foreground hover:text-foreground disabled:opacity-50 group-only:font-medium group-only:text-foreground group-last:group-[&:not(:only-child)]:line-clamp-1 max-md:font-medium max-md:text-foreground"
+          >
+            <Logo className="size-5 shrink-0" />
+            <span itemProp="name">{SITE_NAME}</span>
+          </Link>
+          <meta itemProp="position" content={`1`} />
+        </li>
+      </ol>
 
       <nav className="contents max-lg:hidden">
         <DropdownMenu>
@@ -137,7 +160,7 @@ export const Header = () => {
       </nav>
 
       <Series size="sm">
-        {/* <ClientOnly>{() => <ThemeSwitcher />}</ClientOnly> */}
+        <ThemeSwitcher />
 
         <Button
           size="sm"
