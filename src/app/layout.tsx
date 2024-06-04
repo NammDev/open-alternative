@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from 'next-themes'
+import { Header } from '@/components/layouts/header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className='@container/main mx-auto flex min-h-screen max-w-[60rem] flex-col gap-12 p-8'>
-            {/* <Header /> */}
+            <Header />
             {children}
             <hr className='mt-auto peer-[[href]]:mt-0' />
             {/* <Newsletter
