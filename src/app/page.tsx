@@ -1,12 +1,33 @@
 import { Badge } from "@/components/app-ui/Badge";
+import { Grid } from "@/components/app-ui/Grid";
 import { Intro } from "@/components/app-ui/Intro";
 import { Newsletter } from "@/components/app-ui/Newsletter";
 import { Ping } from "@/components/app-ui/Ping";
-import Image from "next/image";
+import SearchNext from "@/components/SearchNext";
 import Link from "next/link";
-// import { InstantSearchSSRProvider, getServerState } from "react-instantsearch";
+import { Fragment } from "react";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home(request: Request) {
+  // const [sponsoring, newToolCount] = await Promise.all([
+  //   prisma.sponsoring.findFirst({
+  //     where: { startsAt: { lte: new Date() }, endsAt: { gt: new Date() } },
+  //     select: {
+  //       name: true,
+  //       description: true,
+  //       website: true,
+  //       faviconUrl: true,
+  //     },
+  //   }),
+
+  //   prisma.tool.count({
+  //     where: { publishedAt: { gte: LATEST_TOOLS_TRESHOLD, lte: new Date() } },
+  //   }),
+  // ]);
+
+  const hits = [];
+
   return (
     <>
       <div className="flex gap-6">
@@ -33,9 +54,7 @@ export default function Home() {
         {/* <ProductHuntCard launch={launch} className="max-md:hidden md:w-60" /> */}
       </div>
 
-      {/* <InstantSearchSSRProvider key={key} {...serverState}>
-        <Search url={url} sponsoring={sponsoring} />
-      </InstantSearchSSRProvider> */}
+      <SearchNext />
     </>
   );
 }

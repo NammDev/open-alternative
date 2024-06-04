@@ -48,11 +48,11 @@ export const Header = () => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const { data, error, isLoading } = useSWR<number>(
-    { url: "/api/fetch-repository-stars", ...repo },
-    fetcher,
-    SWR_CONFIG,
-  );
+  // const { data, error, isLoading } = useSWR<number>(
+  //   { url: "/api/fetch-repository-stars", ...repo },
+  //   fetcher,
+  //   SWR_CONFIG,
+  // );
 
   return (
     <div
@@ -167,14 +167,17 @@ export const Header = () => {
           variant="secondary"
           prefix={<GithubIcon />}
           suffix={
-            <>
-              {!error && (
-                <Badge size="sm" className="-my-0.5 size-auto">
-                  {isLoading && <LoaderIcon className="size-3 animate-spin" />}
-                  {data && formatter.format(data)}
-                </Badge>
-              )}
-            </>
+            // <>
+            //   {!error && (
+            //     <Badge size="sm" className="-my-0.5 size-auto">
+            //       {isLoading && <LoaderIcon className="size-3 animate-spin" />}
+            //       {data && formatter.format(data)}
+            //     </Badge>
+            //   )}
+            // </>
+            <Badge size="sm" className="-my-0.5 size-auto">
+              389
+            </Badge>
           }
           asChild
         >
