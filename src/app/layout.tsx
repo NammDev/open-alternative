@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layouts/header";
+import { Footer } from "@/components/app-ui/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,8 +34,8 @@ export default function RootLayout({
             {/* <Newsletter
               title='Newsletter'
               description='Get updates on new tools, alternatives, and other cool stuff.'
-            />
-            <Footer /> */}
+            /> */}
+            <Footer />
           </div>
         </ThemeProvider>
         {/* <ScrollRestoration /> */}
