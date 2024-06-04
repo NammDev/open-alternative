@@ -3,31 +3,82 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-background: 0 0% 100%;
+
+  --color-card: 0 0% 98%;
+  --color-card-dark: 0 0% 96%;
+  --color-border: 0 0% 88%;
+  --color-border-dark: 0 0% 83%;
+
+  --color-muted: 0 0% 50%;
+  --color-secondary: 0 0% 33.3%;
+  --color-foreground: 0 0% 15%;
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
+  --color-background: 0 0% 9%;
+
+  --color-card: 0 0% 11%;
+  --color-card-dark: 0 0% 13%;
+  --color-border: 0 0% 20%;
+  --color-border-dark: 0 0% 25%;
+
+  --color-muted: 0 0% 50%;
+  --color-secondary: 0 0% 66.6%;
+  --color-foreground: 0 0% 90%;
+}
+
+/* CSS */
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, /* Contextual Alternates */ 'calt' 1,
+    /* Discretionary Ligatures */ 'dlig' 1, /* fSquare punctuation */ 'ss07' 1,
+    /* Square quotes */ 'ss08' 1, /* Slashed zero */ 'zero' 1, /* Tabular numbers */ 'tnum' 1,
+    /* Open six */ 'cv03' 1, /* Open nine */ 'cv04' 1, /* Alternate one */ 'cv01' 1,
+    /* Flat-top three */ 'cv09', /* Open 4 */ 'cv02' 1;
+}
+
+@supports (font-variation-settings: normal) {
+  /* Use variable font if supported */
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    font-family: InterVariable, sans-serif;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+svg:not([class*='stroke']) {
+  @apply !stroke-[1.75];
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+svg:not([class*='size-']):not([class*='h-']) {
+  @apply size-[1em];
+}
+
+.fade-in {
+  animation: fade-in linear forwards;
+  animation-timeline: view();
+  animation-range-start: 0;
+  animation-range-end: 15%;
+  transform-style: preserve-3d;
+}
+
+@keyframes fade-in {
+  from {
+    scale: 0.9;
+    opacity: 0;
+    transform: translateY(20px) perspective(250px) rotateX(-15deg);
   }
+  to {
+    scale: 1;
+    opacity: 1;
+    transform: translateY(0) perspective(500px) rotateX(0deg);
+  }
+}
+
+select:not([size]) {
+  @apply bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9J2N1cnJlbnRDb2xvcicgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIGNsYXNzPSdsdWNpZGUgbHVjaWRlLWNoZXZyb24tZG93bic+PHBhdGggZD0nbTYgOSA2IDYgNi02Jy8+PC9zdmc+')];
+  @apply dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9JyNmZmYnIHN0cm9rZS13aWR0aD0nMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJyBjbGFzcz0nbHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24nPjxwYXRoIGQ9J202IDkgNiA2IDYtNicvPjwvc3ZnPg==')];
+  @apply bg-no-repeat;
+  @apply bg-[right_0.75rem_center];
+  @apply bg-[length:1.25em_1.25em];
+  @apply pr-8;
 }
