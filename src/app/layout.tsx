@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layouts/header";
 import { Footer } from "@/components/app-ui/Footer";
+import { Newsletter } from "@/components/app-ui/Newsletter";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -48,10 +49,10 @@ export default function RootLayout({
             <Header />
             {children}
             <hr className="mt-auto peer-[[href]]:mt-0" />
-            {/* <Newsletter
-              title='Newsletter'
-              description='Get updates on new tools, alternatives, and other cool stuff.'
-            /> */}
+            <Newsletter
+              title="Newsletter"
+              description="Get updates on new tools, alternatives, and other cool stuff."
+            />
             <Footer />
           </div>
         </ThemeProvider>

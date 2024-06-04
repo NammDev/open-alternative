@@ -1,5 +1,6 @@
 import { Badge } from "@/components/app-ui/Badge";
 import { Intro } from "@/components/app-ui/Intro";
+import { Newsletter } from "@/components/app-ui/Newsletter";
 import { Ping } from "@/components/app-ui/Ping";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,8 +27,7 @@ export default function Home() {
               </Badge>
             )}
           </Intro>
-
-          {/* <Newsletter placeholder="Join the newsletter" buttonVariant="fancy" /> */}
+          <Newsletter placeholder="Join the newsletter" buttonVariant="fancy" />
         </section>
 
         {/* <ProductHuntCard launch={launch} className="max-md:hidden md:w-60" /> */}
