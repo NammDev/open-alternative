@@ -13,7 +13,7 @@ import {
   TagIcon,
   XIcon,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, getRepoOwnerAndName } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Breadcrumb } from "../ui/breadcrumb";
 import {
@@ -23,14 +23,17 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import Link from "next/link";
-import { GITHUB_URL } from "@/lib/constants";
+import { GITHUB_URL, SWR_CONFIG } from "@/lib/constants";
 import { Badge } from "../app-ui/Badge";
 import { Series } from "../app-ui/Series";
 import { Button } from "../app-ui/Button";
 import { Ping } from "../app-ui/Ping";
+import useSWR from "swr";
+import { fetcher } from "@/lib/fetchers";
 
 export const Header = () => {
   const [isNavOpen, setNavOpen] = useState(false);
+  const repo = getRepoOwnerAndName(GITHUB_URL);
   const formatter = new Intl.NumberFormat("en-US", { notation: "compact" });
 
   // Close the mobile navigation when the user presses the "Escape" key
@@ -42,6 +45,12 @@ export const Header = () => {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  const { data, error, isLoading } = useSWR<number>(
+    { url: "/api/fetch-repository-stars", ...repo },
+    fetcher,
+    SWR_CONFIG,
+  );
 
   return (
     <div
@@ -135,14 +144,14 @@ export const Header = () => {
           variant="secondary"
           prefix={<GithubIcon />}
           suffix={
-            <Badge
-              size="sm"
-              className="-my-0.5 size-auto px-1 py-px text-[10px]/tight"
-            >
-              {/* {isLoading && <LoaderIcon className="size-3 animate-spin" />}
-              {data && formatter.format(data)} */}
-              439
-            </Badge>
+            <>
+              {!error && (
+                <Badge size="sm" className="-my-0.5 size-auto">
+                  {isLoading && <LoaderIcon className="size-3 animate-spin" />}
+                  {data && formatter.format(data)}
+                </Badge>
+              )}
+            </>
           }
           asChild
         >

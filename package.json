@@ -21,6 +21,7 @@
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
+    "query-string": "^9.0.0",
     "react": "^18",
     "react-dom": "^18",
     "swr": "^2.2.5",
