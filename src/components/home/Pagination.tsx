@@ -66,6 +66,7 @@ export const Pagination = ({
             href={createURL(page)}
             className="min-w-5 justify-center"
             onClick={(e) => refinePage(e, page)}
+            isActive={currentRefinement === page}
           >
             {page + 1}
           </PaginationLink>
