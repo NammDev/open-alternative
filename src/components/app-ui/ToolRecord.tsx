@@ -1,18 +1,19 @@
-import type { SerializeFrom } from "@remix-run/node";
-import { NavLink } from "@remix-run/react";
 import type { Hit as AlgoliaHit } from "instantsearch.js";
 import { GitForkIcon, StarIcon, TimerIcon } from "lucide-react";
 import type { HTMLAttributes } from "react";
 import { Highlight } from "react-instantsearch";
 import { format } from "timeago.js";
-import type { ToolMany } from "~/services.server/api";
-import { cx } from "~/utils/cva";
-import { Card } from "../Card";
-import { Favicon } from "../Favicon";
-import { H4 } from "../Heading";
-import { Insights } from "../Insights";
+import { cx } from "@/lib/cva";
 
-type Tool = ToolMany | SerializeFrom<ToolMany>;
+// import type { ToolMany } from "~/services.server/api";
+// import { Favicon } from "../Favicon";
+// import { Insights } from "../Insights";
+
+import Link from "next/link";
+import { Card } from "./Card";
+import { H4 } from "./Heading";
+
+type Tool = any;
 
 type ToolRecordProps = HTMLAttributes<HTMLElement> & {
   tool: Tool;
@@ -30,57 +31,29 @@ export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
   ];
 
   return (
-    <NavLink
-      to={`/${tool.slug}`}
+    <Link
+      href={`/${tool.slug}`}
       className={cx("group flex", className)}
-      prefetch="intent"
-      unstable_viewTransition
       {...props}
     >
-      {({ isTransitioning }) => (
-        <Card
-          style={isTransitioning ? { viewTransitionName: "tool" } : undefined}
-        >
-          <Card.Header>
-            <Favicon
-              src={tool.faviconUrl}
-              title={tool.name}
-              style={
-                isTransitioning
-                  ? { viewTransitionName: "tool-favicon" }
-                  : undefined
-              }
-            />
+      <Card>
+        <Card.Header>
+          {/* <Favicon src={tool.faviconUrl} title={tool.name} /> */}
 
-            <H4
-              as="h3"
-              className="truncate"
-              style={
-                isTransitioning
-                  ? { viewTransitionName: "tool-title" }
-                  : undefined
-              }
-            >
-              <ToolHighlight tool={tool} attribute="name" />
-            </H4>
-          </Card.Header>
+          <H4 as="h3" className="truncate">
+            <ToolHighlight tool={tool} attribute="name" />
+          </H4>
+        </Card.Header>
 
-          {tool.description && (
-            <Card.Description
-              style={
-                isTransitioning
-                  ? { viewTransitionName: "tool-description" }
-                  : undefined
-              }
-            >
-              <ToolHighlight tool={tool} attribute="description" />
-            </Card.Description>
-          )}
+        {tool.description && (
+          <Card.Description>
+            <ToolHighlight tool={tool} attribute="description" />
+          </Card.Description>
+        )}
 
-          <Insights insights={insights} className="mt-auto" />
-        </Card>
-      )}
-    </NavLink>
+        {/* <Insights insights={insights} className="mt-auto" /> */}
+      </Card>
+    </Link>
   );
 };
 

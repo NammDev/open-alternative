@@ -1,43 +1,15 @@
-import { Fragment, type HTMLAttributes } from "react";
-import {
-  type UseHitsProps,
-  useHits,
-  Highlight,
-  Hits,
-} from "react-instantsearch";
+import { Fragment } from "react";
+import { useHits } from "react-instantsearch";
 import { Grid } from "../app-ui/Grid";
-import { Hit as AlgoliaHit } from "instantsearch.js";
+import { ToolRecord } from "../app-ui/ToolRecord";
 
-// import { H5 } from "~/components/Heading";
-// import { SponsoredCard } from "~/components/SponsoredCard";
-// import { ToolRecord } from "~/components/records/ToolRecord";
-// import type { SponsoringOne, ToolOne } from "~/services.server/api";
+export const Listing = () => {
+  const { hits, sendEvent } = useHits();
 
-type HitProps = {
-  hit: AlgoliaHit<{
-    name: string;
-    price: number;
-  }>;
-};
-
-function Hit({ hit }: HitProps) {
-  return (
-    <>
-      <Highlight hit={hit} attribute="name" className="Hit-label" />
-      <span className="Hit-price">{hit.name}</span>
-    </>
-  );
-}
-
-export function Listing() {
   return (
     <Grid>
-      {/* {hits.map((hit: any) => (
+      {hits.map((hit, order) => (
         <Fragment key={hit.id}>
-          {Math.min(2, hits.length - 1) === order && (
-            <SponsoredCard sponsoring={sponsoring} />
-          )}
-
           <ToolRecord
             tool={hit}
             onClick={() => sendEvent("click", hit, "Hit Clicked")}
@@ -45,8 +17,9 @@ export function Listing() {
             style={{ order }}
           />
         </Fragment>
-      ))} */}
-      <Hits hitComponent={Hit} />
+      ))}
+
+      {!hits.length && <h5>No results found</h5>}
     </Grid>
   );
-}
+};

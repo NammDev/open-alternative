@@ -5,29 +5,10 @@ import { Newsletter } from "@/components/app-ui/Newsletter";
 import { Ping } from "@/components/app-ui/Ping";
 import SearchNext from "@/components/SearchNext";
 import Link from "next/link";
-import { Fragment } from "react";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home(request: Request) {
-  // const [sponsoring, newToolCount] = await Promise.all([
-  //   prisma.sponsoring.findFirst({
-  //     where: { startsAt: { lte: new Date() }, endsAt: { gt: new Date() } },
-  //     select: {
-  //       name: true,
-  //       description: true,
-  //       website: true,
-  //       faviconUrl: true,
-  //     },
-  //   }),
-
-  //   prisma.tool.count({
-  //     where: { publishedAt: { gte: LATEST_TOOLS_TRESHOLD, lte: new Date() } },
-  //   }),
-  // ]);
-
-  const hits = [];
-
   return (
     <>
       <div className="flex gap-6">

@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch/lite";
 
 export const searchClient = algoliasearch(
-  process.env.ALGOLIA_APP_ID ?? "",
-  process.env.ALGOLIA_SEARCH_API_KEY ?? "",
+  "CZZ39RC5EV",
+  "3cd41050046f2aaa5ea982f03603fc59",
 );

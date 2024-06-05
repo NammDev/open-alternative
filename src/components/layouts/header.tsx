@@ -21,7 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/components/app-ui/DropdownMenu";
 import Link from "next/link";
 import { GITHUB_URL, SITE_NAME, SWR_CONFIG } from "@/lib/constants";
 import { Badge } from "../app-ui/Badge";
