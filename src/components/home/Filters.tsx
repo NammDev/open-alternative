@@ -26,6 +26,7 @@ export const Filters = () => {
   ];
 
   const hitsPerPageItems = [
+    { value: 8, label: "9 per page", default: isMobile },
     { value: 17, label: "18 per page", default: isMobile },
     { value: 35, label: "36 per page", default: !isMobile },
     { value: 71, label: "72 per page" },

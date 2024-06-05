@@ -20,7 +20,10 @@ export const PaginationLink = ({
   ...props
 }: PaginationLinkProps) => {
   return (
-    <Link className={"rounded-sm bg-card-dark"} {...props}>
+    <Link
+      className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm -tracking-micro text-muted hover:text-foreground disabled:opacity-50"
+      {...props}
+    >
       <Slot className="size-5 duration-150 group-hover:-translate-x-0.5">
         {prefix}
       </Slot>
