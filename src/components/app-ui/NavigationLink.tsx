@@ -7,11 +7,6 @@ export const navigationLinkVariants = cva({
     "group flex items-center gap-2 p-0.5 -m-0.5 text-sm -tracking-micro cursor-pointer",
     "text-muted disabled:opacity-50 hover:text-foreground",
   ],
-  variants: {
-    isActive: {
-      true: "font-medium text-foreground",
-    },
-  },
 });
 
 export interface LinkProps
@@ -23,7 +18,6 @@ export const NavigationLink = forwardRef<ElementRef<typeof Link>, LinkProps>(
     return (
       <Link
         ref={ref as React.RefObject<HTMLAnchorElement>} // Update the type of the ref parameter
-        className={cx(navigationLinkVariants({ isActive: true, className }))}
         {...props}
       />
     );

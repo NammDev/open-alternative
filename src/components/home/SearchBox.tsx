@@ -1,32 +1,36 @@
-import { useDebounce } from "@uidotdev/usehooks"
-import { LoaderIcon, SearchIcon, XIcon } from "lucide-react"
-import { type HTMLAttributes, useEffect, useState } from "react"
-import { type UseSearchBoxProps, useInstantSearch, useSearchBox } from "react-instantsearch"
-import { Input } from "~/components/forms/Input"
-import { cx } from "~/utils/cva"
+import { useDebounce } from "@uidotdev/usehooks";
+import { LoaderIcon, SearchIcon, XIcon } from "lucide-react";
+import { type HTMLAttributes, useEffect, useState } from "react";
+import {
+  type UseSearchBoxProps,
+  useInstantSearch,
+  useSearchBox,
+} from "react-instantsearch";
+import { cx } from "@/lib/cva";
+import { Input } from "../app-ui/Input";
 
-type SearchBoxProps = HTMLAttributes<HTMLElement> & UseSearchBoxProps
+type SearchBoxProps = HTMLAttributes<HTMLElement> & UseSearchBoxProps;
 
 export const SearchBox = ({ className, ...props }: SearchBoxProps) => {
-  const { query, refine } = useSearchBox(props)
-  const { status } = useInstantSearch()
-  const [searchQuery, setSearchQuery] = useState(query)
-  const debouncedSearchTerm = useDebounce(searchQuery, 250)
-  const isSearchStalled = status === "stalled"
+  const { query, refine } = useSearchBox(props);
+  const { status } = useInstantSearch();
+  const [searchQuery, setSearchQuery] = useState(query);
+  const debouncedSearchTerm = useDebounce(searchQuery, 250);
+  const isSearchStalled = status === "stalled";
 
   useEffect(() => {
-    refine(debouncedSearchTerm)
-  }, [debouncedSearchTerm, refine])
+    refine(debouncedSearchTerm);
+  }, [debouncedSearchTerm, refine]);
 
   return (
     <form
       role="search"
       noValidate
       className={cx("relative", className)}
-      onSubmit={e => e.preventDefault()}
+      onSubmit={(e) => e.preventDefault()}
       onReset={() => setSearchQuery("")}
     >
-      <SearchIcon className="absolute top-1/2 left-3 -translate-y-1/2 size-4 shrink-0 pointer-events-none" />
+      <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-4 shrink-0 -translate-y-1/2" />
 
       <Input
         autoComplete="off"
@@ -37,26 +41,29 @@ export const SearchBox = ({ className, ...props }: SearchBoxProps) => {
         spellCheck={false}
         maxLength={512}
         value={searchQuery}
-        onChange={e => setSearchQuery(e.currentTarget.value)}
+        onChange={(e) => setSearchQuery(e.currentTarget.value)}
       />
 
-      <div className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+      <div className="pointer-events-none absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2">
         {!!searchQuery.length && !isSearchStalled && (
-          <button type="reset" className="opacity-60 pointer-events-auto hover:opacity-100">
+          <button
+            type="reset"
+            className="pointer-events-auto opacity-60 hover:opacity-100"
+          >
             <XIcon className="size-4" />
           </button>
         )}
 
         {isSearchStalled && <LoaderIcon className="size-4 animate-spin" />}
 
-        <p className="flex items-center text-xs gap-1.5 whitespace-nowrap">
+        <p className="flex items-center gap-1.5 whitespace-nowrap text-xs">
           <span className="opacity-50 max-sm:hidden">Search by</span>
 
           <a
             href="https://www.algolia.com/developers/?utm_source=openalternative&utm_medium=referral"
             target="_blank"
             rel="noreferrer"
-            className="text-foreground/50 pointer-events-auto hover:text-pink-500"
+            className="pointer-events-auto text-foreground/50 hover:text-pink-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -71,5 +78,5 @@ export const SearchBox = ({ className, ...props }: SearchBoxProps) => {
         </p>
       </div>
     </form>
-  )
-}
+  );
+};

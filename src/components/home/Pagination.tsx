@@ -1,8 +1,8 @@
 import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import type { HTMLAttributes, RefObject } from "react";
 import { type UsePaginationProps, usePagination } from "react-instantsearch";
-import { PaginationLink } from "~/components/PaginationLink";
 import { cx } from "@/lib/cva";
+import { PaginationLink } from "../app-ui/PaginationLink";
 
 type PaginationProps = HTMLAttributes<HTMLElement> &
   UsePaginationProps & {
@@ -44,7 +44,7 @@ export const Pagination = ({
       {...props}
     >
       <PaginationLink
-        to={createURL(currentRefinement - 1)}
+        href={createURL(currentRefinement - 1)}
         isDisabled={isFirstPage}
         prefix={<MoveLeftIcon />}
         onClick={(e) => refinePage(e, currentRefinement - 1)}
@@ -63,8 +63,7 @@ export const Pagination = ({
         {pages.map((page) => (
           <PaginationLink
             key={`page-${page}`}
-            to={createURL(page)}
-            isActive={currentRefinement === page}
+            href={createURL(page)}
             className="min-w-5 justify-center"
             onClick={(e) => refinePage(e, page)}
           >
@@ -74,7 +73,7 @@ export const Pagination = ({
       </div>
 
       <PaginationLink
-        to={createURL(currentRefinement + 1)}
+        href={createURL(currentRefinement + 1)}
         isDisabled={isLastPage}
         suffix={<MoveRightIcon />}
         onClick={(e) => refinePage(e, currentRefinement + 1)}

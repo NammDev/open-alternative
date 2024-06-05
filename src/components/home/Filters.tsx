@@ -1,24 +1,19 @@
-import { useLocalStorage, useMediaQuery } from "@uidotdev/usehooks";
+"use client";
+
 import { PanelBottomCloseIcon, PanelBottomOpenIcon } from "lucide-react";
-import type { HTMLAttributes } from "react";
 import { useInstantSearch } from "react-instantsearch";
 import { cx } from "@/lib/cva";
-
 import { HitsPerPage } from "./HitsPerPage";
 import { Refinements } from "./Refinements";
 import { SearchBox } from "./SearchBox";
 import { SortBy } from "./SortBy";
 import { Button } from "../app-ui/Button";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { useState } from "react";
 
-export const Filters = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLElement>) => {
-  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
-  const [isFiltersOpen, setIsFiltersOpen] = useLocalStorage(
-    "filtersOpen",
-    false,
-  );
+export const Filters = () => {
+  const { isMobile } = useMediaQuery();
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const { results } = useInstantSearch();
 
   const sortByItems = [
@@ -39,11 +34,7 @@ export const Filters = ({
   return (
     <div className="flex flex-col gap-3">
       <div
-        className={cx(
-          "flex w-full flex-wrap gap-x-2 gap-y-3 md:flex-nowrap",
-          className,
-        )}
-        {...props}
+        className={cx("flex w-full flex-wrap gap-x-2 gap-y-3 md:flex-nowrap")}
       >
         <Button
           type="button"
@@ -66,7 +57,7 @@ export const Filters = ({
         <SearchBox className="w-full" />
       </div>
 
-      {/* {isFiltersOpen && (
+      {isFiltersOpen && (
         <>
           <Refinements />
 
@@ -80,7 +71,7 @@ export const Filters = ({
             </p>
           </div>
         </>
-      )} */}
+      )}
     </div>
   );
 };

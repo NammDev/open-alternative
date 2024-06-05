@@ -4,12 +4,7 @@ import { Grid } from "../app-ui/Grid";
 import { ToolRecord } from "../app-ui/ToolRecord";
 import { H5 } from "../app-ui/Heading";
 
-type ListingProps = HTMLAttributes<HTMLElement> & {
-  // sponsoring: SponsoringOne | null;
-  sponroring: any;
-};
-
-export const Listing = ({ sponsoring }: ListingProps) => {
+export const Listing = () => {
   const { hits, sendEvent } = useHits();
 
   return (

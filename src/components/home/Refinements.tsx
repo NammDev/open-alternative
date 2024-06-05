@@ -1,13 +1,16 @@
-import type { HTMLAttributes } from "react"
-import { cx } from "~/utils/cva"
-import { RangeSlider } from "./RangeSlider"
-import { RefinementList } from "./RefinementList"
+import type { HTMLAttributes } from "react";
+import { cx } from "@/lib/cva";
+import { RangeSlider } from "./RangeSlider";
+import { RefinementList } from "./RefinementList";
 
-export const Refinements = ({ className, ...props }: HTMLAttributes<HTMLElement>) => {
+export const Refinements = ({
+  className,
+  ...props
+}: HTMLAttributes<HTMLElement>) => {
   return (
     <div
       className={cx(
-        "grid grid-auto-fill-xs justify-between gap-6 w-full py-4 px-6 border rounded-md",
+        "grid w-full justify-between gap-6 rounded-md border px-6 py-4 grid-auto-fill-xs",
         className,
       )}
       {...props}
@@ -20,5 +23,5 @@ export const Refinements = ({ className, ...props }: HTMLAttributes<HTMLElement>
       <RangeSlider attribute="stars" />
       <RangeSlider attribute="forks" />
     </div>
-  )
-}
+  );
+};

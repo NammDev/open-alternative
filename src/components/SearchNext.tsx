@@ -26,11 +26,11 @@ export default function SearchNext() {
       }}
     >
       <div ref={listingRef} className="flex scroll-mt-14 flex-col gap-6">
-        {/* <Filters /> */}
+        <Filters />
         <Listing />
       </div>
 
-      {/* <Pagination listingRef={listingRef} padding={2} /> */}
+      <Pagination listingRef={listingRef} padding={2} />
     </InstantSearchNext>
   );
 }

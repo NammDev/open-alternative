@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 import { type UseHitsPerPageProps, useHitsPerPage } from "react-instantsearch";
-import { Select } from "~/components/forms/Select";
+import { Select } from "../app-ui/Select";
 
 type HitsPerPageProps = HTMLAttributes<HTMLElement> & UseHitsPerPageProps;
 
