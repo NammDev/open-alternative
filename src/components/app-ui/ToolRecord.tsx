@@ -4,15 +4,13 @@ import type { HTMLAttributes } from "react";
 import { Highlight } from "react-instantsearch";
 import { format } from "timeago.js";
 import { cx } from "@/lib/cva";
-
-// import type { ToolMany } from "~/services.server/api";
-// import { Favicon } from "../Favicon";
-// import { Insights } from "../Insights";
-
 import Link from "next/link";
 import { Card } from "./Card";
 import { H4 } from "./Heading";
+import { Favicon } from "./Favicon";
+import { Insights } from "./Insights";
 
+// import type { ToolMany } from "~/services.server/api";
 type Tool = any;
 
 type ToolRecordProps = HTMLAttributes<HTMLElement> & {
@@ -38,7 +36,7 @@ export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
     >
       <Card>
         <Card.Header>
-          {/* <Favicon src={tool.faviconUrl} title={tool.name} /> */}
+          <Favicon src={tool.faviconUrl} title={tool.name} />
 
           <H4 as="h3" className="truncate">
             <ToolHighlight tool={tool} attribute="name" />
@@ -51,7 +49,7 @@ export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
           </Card.Description>
         )}
 
-        {/* <Insights insights={insights} className="mt-auto" /> */}
+        <Insights insights={insights} className="mt-auto" />
       </Card>
     </Link>
   );

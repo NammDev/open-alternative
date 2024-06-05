@@ -1,15 +1,25 @@
-import { Fragment } from "react";
+import { Fragment, HTMLAttributes } from "react";
 import { useHits } from "react-instantsearch";
 import { Grid } from "../app-ui/Grid";
 import { ToolRecord } from "../app-ui/ToolRecord";
+import { H5 } from "../app-ui/Heading";
 
-export const Listing = () => {
+type ListingProps = HTMLAttributes<HTMLElement> & {
+  // sponsoring: SponsoringOne | null;
+  sponroring: any;
+};
+
+export const Listing = ({ sponsoring }: ListingProps) => {
   const { hits, sendEvent } = useHits();
 
   return (
     <Grid>
       {hits.map((hit, order) => (
         <Fragment key={hit.id}>
+          {/* {Math.min(2, hits.length - 1) === order && (
+            <SponsoredCard sponsoring={sponsoring} />
+          )} */}
+
           <ToolRecord
             tool={hit}
             onClick={() => sendEvent("click", hit, "Hit Clicked")}
@@ -19,7 +29,7 @@ export const Listing = () => {
         </Fragment>
       ))}
 
-      {!hits.length && <h5>No results found</h5>}
+      {!hits.length && <H5>No results found</H5>}
     </Grid>
   );
 };
