@@ -4,7 +4,7 @@ import { cx } from "@/lib/cva";
 type InsightsProps = HTMLAttributes<HTMLElement> & {
   insights: {
     label: string;
-    value: ReactNode | null;
+    value: string | null;
     title?: string;
     icon: React.ComponentType<{ className?: string }>;
   }[];
