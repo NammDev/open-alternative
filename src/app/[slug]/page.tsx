@@ -11,7 +11,10 @@ import { Series } from "@/components/app-ui/Series";
 import { Tag } from "@/components/app-ui/Tag";
 import { ToolRecord } from "@/components/app-ui/ToolRecord";
 import { getAlternatives } from "@/lib/actions/alternativetotool";
-import { getCategories, getToolsRelated } from "@/lib/actions/categorytotool";
+import {
+  getCategoriesTool,
+  getToolsRelated,
+} from "@/lib/actions/categorytotool";
 import { getLanguages } from "@/lib/actions/languagetotool";
 import { getTool } from "@/lib/actions/tools";
 import { getTopics } from "@/lib/actions/topictotool";
@@ -29,7 +32,7 @@ export default async function ToolsPage({
     await Promise.all([
       getTool(slug),
       getAlternatives(slug),
-      getCategories(slug),
+      getCategoriesTool(slug),
       getLanguages(slug),
       getTopics(slug),
       getToolsRelated(slug),

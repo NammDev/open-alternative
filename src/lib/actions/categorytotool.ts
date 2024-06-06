@@ -11,7 +11,7 @@ const categoryManyPayload = Prisma.validator<Prisma.CategoryInclude>()({
   },
 });
 
-export const getCategories = async (slug: string) => {
+export const getCategoriesTool = async (slug: string) => {
   return await db.categoryToTools.findMany({
     where: { tool: { slug } },
     orderBy: { category: { name: "asc" } },
