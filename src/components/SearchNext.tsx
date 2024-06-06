@@ -15,7 +15,7 @@ export default function SearchNext() {
   return (
     <InstantSearchNext
       searchClient={searchClient}
-      indexName="open_alternative"
+      indexName="openalternative"
       routing={{
         router: {
           cleanUrlOnDispose: false,

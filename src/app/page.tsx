@@ -1,5 +1,4 @@
 import { Badge } from "@/components/app-ui/Badge";
-import { Grid } from "@/components/app-ui/Grid";
 import { Intro } from "@/components/app-ui/Intro";
 import { Newsletter } from "@/components/app-ui/Newsletter";
 import { Ping } from "@/components/app-ui/Ping";

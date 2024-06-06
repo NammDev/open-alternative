@@ -22,8 +22,6 @@ export const Listing = () => {
           />
         </Fragment>
       ))}
-
-      {!hits.length && <H5>No results found</H5>}
     </Grid>
   );
 };
