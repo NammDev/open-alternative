@@ -11,7 +11,7 @@ export const CategoryRecord = ({ category, ...props }: CategoryRecordProps) => {
     <CardSimple
       href={`/categories/${category.slug}`}
       label={category.name}
-      caption={`${category._count.tools} tool`}
+      caption={`${category._count.tools} tools`}
       {...props}
     />
   );
