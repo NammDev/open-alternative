@@ -23,7 +23,7 @@ export default async function Home(request: Request) {
                 asChild
               >
                 <Link href="/latest">
-                  <Ping /> 3 tools added this week
+                  <Ping /> 2 tools added this week
                 </Link>
               </Badge>
             )}
