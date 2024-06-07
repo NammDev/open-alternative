@@ -22,3 +22,10 @@ export const getRepoOwnerAndName = (url: string | null) => {
 
   return null;
 };
+
+export const getCurrentPage = (page?: string | null) => {
+  return Math.max(
+    page && !Number.isNaN(Number(page)) ? parseInt(page || "1", 10) : 1,
+    1,
+  );
+};

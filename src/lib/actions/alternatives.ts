@@ -4,23 +4,21 @@ import { Prisma } from "@prisma/client";
 import { db } from "../db";
 
 // Alternatives
-export const alternativeOnePayload =
-  Prisma.validator<Prisma.AlternativeInclude>()({
-    tools: {
-      where: { tool: { publishedAt: { lte: new Date() } } },
-      include: { tool: true },
-      orderBy: [{ tool: { isFeatured: "desc" } }, { tool: { score: "desc" } }],
-    },
-  });
+const alternativeOnePayload = Prisma.validator<Prisma.AlternativeInclude>()({
+  tools: {
+    where: { tool: { publishedAt: { lte: new Date() } } },
+    include: { tool: true },
+    orderBy: [{ tool: { isFeatured: "desc" } }, { tool: { score: "desc" } }],
+  },
+});
 
-export const alternativeManyPayload =
-  Prisma.validator<Prisma.AlternativeInclude>()({
-    _count: {
-      select: {
-        tools: { where: { tool: { publishedAt: { lte: new Date() } } } },
-      },
+const alternativeManyPayload = Prisma.validator<Prisma.AlternativeInclude>()({
+  _count: {
+    select: {
+      tools: { where: { tool: { publishedAt: { lte: new Date() } } } },
     },
-  });
+  },
+});
 
 export type AlternativeOne = Prisma.AlternativeGetPayload<{
   include: typeof alternativeOnePayload;
