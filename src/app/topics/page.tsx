@@ -3,8 +3,6 @@ import { getTopics, getTopicsCount } from "@/lib/actions/topics";
 import { Intro } from "@/components/app-ui/Intro";
 import { SearchParams } from "@/types";
 import { TopicRecord } from "@/components/app-ui/TopicRecord";
-import { PaginationTopic } from "./Pagination";
-import { TOPICS_PER_PAGE } from "@/lib/constants";
 
 const meta = {
   title: "Open Source Software Topics",
