@@ -3,8 +3,8 @@
 import { Prisma } from "@prisma/client";
 import { db } from "../db";
 import { LATEST_TOOLS_TRESHOLD } from "../constants";
-import { z } from "zod";
 import slugify from "slugify";
+import { CreateToolSchema, CreateToolSchemaType } from "../schemas/tool";
 
 const toolOnePayload = Prisma.validator<Prisma.ToolInclude>()({});
 const toolManyPayload = Prisma.validator<Prisma.ToolInclude>()({});
@@ -60,23 +60,8 @@ export const getTools = async () => {
     );
 };
 
-const schema = z.object({
-  name: z.string().min(1),
-  website: z.string().url().min(1),
-  repository: z
-    .string()
-    .url()
-    .refine(
-      (url) => /^https:\/\/github\.com\/([^/]+)\/([^/]+)(\/)?$/.test(url),
-      "The repository must be a valid GitHub URL with owner and repo name.",
-    ),
-  description: z.string().min(1).max(200),
-});
-
-export default async function createTool(formData: FormData) {
-  const validatedFields = schema.safeParse(
-    Object.fromEntries(formData.entries()),
-  );
+export default async function createTool(form: CreateToolSchemaType) {
+  const validatedFields = CreateToolSchema.safeParse(form);
   // Return early if the form data is invalid
   if (!validatedFields.success) {
     return {
@@ -85,13 +70,14 @@ export default async function createTool(formData: FormData) {
   }
 
   const { name, website, repository, description } = validatedFields.data;
-  const tool = await db.tool.create({
-    data: {
-      name,
-      website,
-      repository,
-      description,
-      slug: slugify(name),
-    },
-  });
+  // const tool = await db.tool.create({
+  //   data: {
+  //     name,
+  //     website,
+  //     repository,
+  //     description,
+  //     slug: slugify(name),
+  //   },
+  // });
+  console.log(name);
 }
