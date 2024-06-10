@@ -4,25 +4,23 @@ import { Intro } from "@/components/app-ui/Intro";
 import { Label } from "@/components/app-ui/Label";
 import { Prose } from "@/components/app-ui/Prose";
 import { TextArea } from "@/components/app-ui/TextArea";
+import createTool from "@/lib/actions/tools";
 import { SITE_NAME } from "@/lib/constants";
-import { useId } from "react";
 
 export default function SubmitPage() {
   const meta = {
     title: "Submit your Open Source Software",
     description: `Help us grow the list of open source alternatives to proprietary software. Contribute to ${SITE_NAME} by submitting a new open source alternative.`,
   };
-  const id = useId();
 
   return (
     <>
       <Intro {...meta} />
+
       <div className="flex flex-col-reverse items-start gap-12 lg:flex-row">
         <form
-          method="POST"
-          action="/api/submit"
+          action={createTool}
           className="grid w-full max-w-xl gap-6 grid-auto-fill-xs"
-          noValidate
         >
           <div className="flex flex-col gap-1">
             <Label htmlFor="name" isRequired>
@@ -57,7 +55,6 @@ export default function SubmitPage() {
             <Label htmlFor="repository" isRequired>
               Repository:
             </Label>
-
             <Input
               type="url"
               name="repository"
