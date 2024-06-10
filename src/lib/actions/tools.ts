@@ -1,5 +1,8 @@
 "use server";
 
+const GOOGLE_FAVICON_URL =
+  "https://www.google.com/s2/favicons?sz=64&domain_url=";
+
 import { Prisma } from "@prisma/client";
 import { db } from "../db";
 import { LATEST_TOOLS_TRESHOLD } from "../constants";
@@ -159,6 +162,8 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
         lastCommitDate,
         score,
         publishedAt: new Date(),
+        faviconUrl:
+          repository.owner?.avatarUrl || `${GOOGLE_FAVICON_URL}github.com`,
 
         // Topics
         topics: {

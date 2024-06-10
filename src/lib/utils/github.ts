@@ -13,6 +13,9 @@ export type RepositoryQueryResult = {
     licenseInfo: {
       spdxId: string;
     };
+    owner: {
+      avatarUrl: string;
+    };
     defaultBranchRef: {
       target: {
         history: {
@@ -56,6 +59,9 @@ export const repositoryQuery = `query RepositoryQuery($owner: String!, $name: St
     forkCount
     watchers {
       totalCount
+    }
+    owner {
+      avatarUrl
     }
     mentionableUsers {
       totalCount
