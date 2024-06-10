@@ -2,6 +2,10 @@
 
 import { Prisma } from "@prisma/client";
 import { db } from "../db";
+import {
+  CreateCategorySchema,
+  CreateCategorySchemaType,
+} from "@/lib/schemas/category";
 
 const categoryManyPayload = Prisma.validator<Prisma.CategoryInclude>()({
   _count: {
@@ -36,3 +40,18 @@ export const getCategoriesBySlug = async (slug: string) => {
     include: categoryOnePayload,
   });
 };
+
+export async function createCategory(form: CreateCategorySchemaType) {
+  const parsedBody = CreateCategorySchema.safeParse(form);
+  if (!parsedBody.success) {
+    throw new Error("bad request");
+  }
+
+  const { name } = parsedBody.data;
+  return await db.category.create({
+    data: {
+      name,
+      slug: name.toLowerCase().replace(/\s/g, "-"),
+    },
+  });
+}

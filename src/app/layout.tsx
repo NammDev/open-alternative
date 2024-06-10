@@ -4,10 +4,10 @@ import localFont from "next/font/local";
 
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layouts/header";
 import { Footer } from "@/components/app-ui/Footer";
 import { Newsletter } from "@/components/app-ui/Newsletter";
+import { Provider } from "@/components/layouts/providers";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("bg-background text-foreground", inter.className)}>
-        <ThemeProvider
+        <Provider
           attribute="class"
           defaultTheme="system"
           enableSystem
@@ -55,7 +55,7 @@ export default function RootLayout({
             />
             <Footer />
           </div>
-        </ThemeProvider>
+        </Provider>
         {/* <ScrollRestoration /> */}
       </body>
     </html>
