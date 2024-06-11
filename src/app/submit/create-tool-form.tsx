@@ -16,15 +16,26 @@ import { Textarea } from "@/components/ui/textarea";
 import { CreateToolSchema, CreateToolSchemaType } from "@/lib/schemas/tool";
 import { Button } from "@/components/app-ui/Button";
 import { createTool } from "@/lib/actions/tools";
+import { useRouter } from "next/navigation";
 
 export function CreateToolForm() {
+  const [loading, setLoading] = React.useState(false);
+  const router = useRouter();
   // react-hook-form
   const form = useForm<CreateToolSchemaType>({
     resolver: zodResolver(CreateToolSchema),
   });
 
   async function onSubmit(data: CreateToolSchemaType) {
-    await createTool(data);
+    setLoading(true);
+    try {
+      await createTool(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+      router.push("/");
+    }
   }
 
   return (
@@ -119,7 +130,9 @@ export function CreateToolForm() {
         </div>
 
         <div>
-          <Button className="min-w-32">Submit</Button>
+          <Button disabled={loading} className="min-w-32">
+            Submit
+          </Button>
         </div>
       </form>
     </Form>

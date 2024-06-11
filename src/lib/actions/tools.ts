@@ -135,6 +135,14 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
         : repository.licenseInfo.spdxId;
     const lastCommitDate = metrics.lastCommitDate;
 
+    // lines of codes
+    const response = await fetch(
+      `https://api.codetabs.com/v1/loc?github=${owner}/${name}`,
+      { method: "GET" },
+    );
+    const dataCodeTabs = await response.json();
+    const total = dataCodeTabs.find((item: any) => item.language === "Total");
+
     // Prepare topics data
     const topics = repository.repositoryTopics.nodes.map(({ topic }) => ({
       slug: slugify(topic.name),
@@ -161,6 +169,8 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
         score,
         publishedAt: new Date(),
         description: repository.description,
+        linesOfCode: total.linesOfCode,
+        files: total.files,
         faviconUrl:
           repository.owner?.avatarUrl ||
           `https://www.google.com/s2/favicons?sz=64&domain_url=github.com`,

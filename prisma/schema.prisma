@@ -32,6 +32,8 @@ model Tool {
   forks          Int                 @default(0)
   license        String?
   score          Int                 @default(0)
+  linesOfCode    Int                 @default(0)
+  files          Int                 @default(0)
   bump           Int?
   faviconUrl     String?
   screenshotUrl  String?
