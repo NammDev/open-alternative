@@ -11,6 +11,7 @@ export const CreateToolSchema = z.object({
       "The repository must be a valid GitHub URL with owner and repo name.",
     ),
   content: z.string().min(1).max(200),
+  youtube: z.string().optional(),
 });
 
 export type CreateToolSchemaType = z.infer<typeof CreateToolSchema>;

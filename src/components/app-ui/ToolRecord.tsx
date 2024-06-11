@@ -53,7 +53,9 @@ export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
             <ToolHighlight tool={tool} attribute="name" />
           </H4>
 
-          <LucideYoutube className="ml-auto h-9 w-9 text-red-600" />
+          {tool.youtube && (
+            <LucideYoutube className="ml-auto h-9 w-9 text-red-600" />
+          )}
         </Card.Header>
 
         {tool.description && (

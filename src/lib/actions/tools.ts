@@ -78,7 +78,7 @@ export async function createTool(form: CreateToolSchemaType) {
     };
   }
 
-  const { name, website, repository, content } = validatedFields.data;
+  const { name, website, repository, content, youtube } = validatedFields.data;
   const ogData = await getOg(website);
   const tool = await db.tool.create({
     data: {
@@ -86,19 +86,23 @@ export async function createTool(form: CreateToolSchemaType) {
       website,
       repository,
       content,
+      youtube: youtube || null,
       slug: slugify(name),
       screenshotUrl: ogData?.image,
     },
   });
 
-  await updateGithubForTool(repository, tool.id);
+  const repo = getRepoOwnerAndName(repository);
+
+  await updateGithubForTool(repo?.owner, repo?.name, tool.id);
+  await updateLocsForTool(repo?.owner, repo?.name, tool.id);
 }
 
-export async function updateGithubForTool(repositoryUrl: string, id: string) {
-  const repo = getRepoOwnerAndName(repositoryUrl);
-  const owner = repo?.owner;
-  const name = repo?.name;
-
+export async function updateGithubForTool(
+  owner: string | undefined,
+  name: string | undefined,
+  id: string,
+) {
   try {
     const { repository } = (await graphql({
       query: repositoryQuery,
@@ -135,14 +139,6 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
         : repository.licenseInfo.spdxId;
     const lastCommitDate = metrics.lastCommitDate;
 
-    // lines of codes
-    const response = await fetch(
-      `https://api.codetabs.com/v1/loc?github=${owner}/${name}`,
-      { method: "GET" },
-    );
-    const dataCodeTabs = await response.json();
-    const total = dataCodeTabs.find((item: any) => item.language === "Total");
-
     // Prepare topics data
     const topics = repository.repositoryTopics.nodes.map(({ topic }) => ({
       slug: slugify(topic.name),
@@ -169,8 +165,6 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
         score,
         publishedAt: new Date(),
         description: repository.description,
-        linesOfCode: total.linesOfCode,
-        files: total.files,
         faviconUrl:
           repository.owner?.avatarUrl ||
           `https://www.google.com/s2/favicons?sz=64&domain_url=github.com`,
@@ -221,5 +215,32 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
     });
   } catch (error) {
     console.error(`Failed to update repository ${owner}/${name}`, error);
+  }
+}
+
+export async function updateLocsForTool(
+  owner: string | undefined,
+  name: string | undefined,
+  id: string,
+) {
+  try {
+    // lines of codes
+    const response = await fetch(
+      `https://api.codetabs.com/v1/loc?github=${owner}/${name}`,
+      { method: "GET" },
+    );
+    const dataCodeTabs = await response.json();
+    const total = dataCodeTabs.find((item: any) => item.language === "Total");
+
+    // Update the tool
+    return await db.tool.update({
+      where: { id },
+      data: {
+        linesOfCode: total.linesOfCode || 0,
+        files: total.files || 0,
+      },
+    });
+  } catch (error) {
+    console.error(`Failed LOCs`);
   }
 }

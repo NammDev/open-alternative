@@ -25,7 +25,7 @@ export function CreateToolForm() {
   const form = useForm<CreateToolSchemaType>({
     resolver: zodResolver(CreateToolSchema),
     defaultValues: {
-      content: "Content ...",
+      content: "Content",
     },
   });
 
@@ -113,10 +113,32 @@ export function CreateToolForm() {
         <div className="col-span-full flex flex-col gap-1">
           <FormField
             control={form.control}
+            name="youtube"
+            render={({ field }) => (
+              <>
+                <FormLabel className="block text-sm font-semibold text-foreground">
+                  Youtube:
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="url"
+                    placeholder="https://www.youtube.com/watch?v=zfAb95tJvZQ"
+                  />
+                </FormControl>
+                <FormMessage />
+              </>
+            )}
+          />
+        </div>
+
+        <div className="col-span-full flex flex-col gap-1">
+          <FormField
+            control={form.control}
             name="content"
             render={({ field }) => (
               <>
-                <FormLabel className="block text-sm font-semibold text-foreground after:ml-0.5 after:text-red-600 after:content-['*'] [&[for]]:cursor-pointer">
+                <FormLabel className="block text-sm font-semibold text-foreground">
                   Content:
                 </FormLabel>
                 <FormControl>
