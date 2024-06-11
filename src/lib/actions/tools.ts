@@ -78,13 +78,14 @@ export async function createTool(form: CreateToolSchemaType) {
     };
   }
 
-  const { name, website, repository } = validatedFields.data;
+  const { name, website, repository, content } = validatedFields.data;
   const ogData = await getOg(website);
   const tool = await db.tool.create({
     data: {
       name,
       website,
       repository,
+      content,
       slug: slugify(name),
       screenshotUrl: ogData?.image,
     },

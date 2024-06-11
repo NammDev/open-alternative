@@ -99,11 +99,11 @@ export function CreateToolForm() {
         <div className="col-span-full flex flex-col gap-1">
           <FormField
             control={form.control}
-            name="description"
+            name="content"
             render={({ field }) => (
               <>
                 <FormLabel className="block text-sm font-semibold text-foreground after:ml-0.5 after:text-red-600 after:content-['*'] [&[for]]:cursor-pointer">
-                  Description:
+                  Content:
                 </FormLabel>
                 <FormControl>
                   <Textarea

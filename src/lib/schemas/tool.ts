@@ -10,7 +10,7 @@ export const CreateToolSchema = z.object({
       (url) => /^https:\/\/github\.com\/([^/]+)\/([^/]+)(\/)?$/.test(url),
       "The repository must be a valid GitHub URL with owner and repo name.",
     ),
-  description: z.string().min(1).max(200),
+  content: z.string().min(1).max(200),
 });
 
 export type CreateToolSchemaType = z.infer<typeof CreateToolSchema>;
