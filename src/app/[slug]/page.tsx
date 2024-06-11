@@ -91,6 +91,17 @@ export default async function ToolsPage({
                 </a>
               </Button>
             )}
+            <Button
+              className="bg-red-600 text-white"
+              suffix={
+                <MoveRightIcon className="duration-150 group-hover:translate-x-0.5" />
+              }
+              asChild
+            >
+              <a href={tool.website} target="_blank" rel="nofollow noreferrer">
+                View Youtube
+              </a>
+            </Button>
           </div>
 
           <RepositoryDetails

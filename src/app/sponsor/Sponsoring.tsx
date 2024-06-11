@@ -44,9 +44,7 @@ export const Sponsoring = ({
     setPrice(price);
   }, [date, disabledDates]);
 
-  const onCreateCheckout = () => {
-    console.log("hello");
-  };
+  const onCreateCheckout = () => {};
 
   return (
     <div className={cx("flex flex-col gap-4", className)} {...props}>

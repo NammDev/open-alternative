@@ -2,8 +2,10 @@ import {
   CopyrightIcon,
   GitForkIcon,
   MoveRightIcon,
+  Ruler,
   StarIcon,
   TimerIcon,
+  FileIcon,
 } from "lucide-react";
 import type { HTMLAttributes } from "react";
 import { format } from "timeago.js";
@@ -30,6 +32,16 @@ export const RepositoryDetails = ({
   const insights = [
     { label: "Stars", value: tool.stars.toLocaleString(), icon: StarIcon },
     { label: "Forks", value: tool.forks.toLocaleString(), icon: GitForkIcon },
+    {
+      label: "Lines Of Code",
+      value: tool.linesOfCode.toLocaleString(),
+      icon: Ruler,
+    },
+    {
+      label: "Number Of File",
+      value: tool.files.toLocaleString(),
+      icon: FileIcon,
+    },
     {
       label: "Last commit",
       value: tool.lastCommitDate && format(tool.lastCommitDate),

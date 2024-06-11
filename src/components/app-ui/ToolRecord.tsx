@@ -1,5 +1,11 @@
 import type { Hit as AlgoliaHit } from "instantsearch.js";
-import { GitForkIcon, StarIcon, TimerIcon } from "lucide-react";
+import {
+  GitForkIcon,
+  LucideYoutube,
+  StarIcon,
+  TimerIcon,
+  YoutubeIcon,
+} from "lucide-react";
 import type { HTMLAttributes } from "react";
 import { Highlight } from "react-instantsearch";
 import { format } from "timeago.js";
@@ -18,7 +24,6 @@ type ToolRecordProps = HTMLAttributes<HTMLElement> & {
 };
 
 export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
-  console.log(tool);
   const insights = [
     { label: "Stars", value: tool.stars.toLocaleString(), icon: StarIcon },
     // { label: "Forks", value: tool.forks.toLocaleString(), icon: GitForkIcon },
@@ -47,6 +52,8 @@ export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
           <H4 as="h3" className="truncate">
             <ToolHighlight tool={tool} attribute="name" />
           </H4>
+
+          <LucideYoutube className="ml-auto h-9 w-9 text-red-600" />
         </Card.Header>
 
         {tool.description && (
