@@ -18,9 +18,15 @@ type ToolRecordProps = HTMLAttributes<HTMLElement> & {
 };
 
 export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
+  console.log(tool);
   const insights = [
     { label: "Stars", value: tool.stars.toLocaleString(), icon: StarIcon },
-    { label: "Forks", value: tool.forks.toLocaleString(), icon: GitForkIcon },
+    // { label: "Forks", value: tool.forks.toLocaleString(), icon: GitForkIcon },
+    {
+      label: "LOCS",
+      value: tool.linesOfCode.toLocaleString(),
+      icon: GitForkIcon,
+    },
     {
       label: "Last commit",
       value: tool.lastCommitDate && format(tool.lastCommitDate),

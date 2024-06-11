@@ -24,6 +24,9 @@ export function CreateToolForm() {
   // react-hook-form
   const form = useForm<CreateToolSchemaType>({
     resolver: zodResolver(CreateToolSchema),
+    defaultValues: {
+      content: "Content ...",
+    },
   });
 
   async function onSubmit(data: CreateToolSchemaType) {
@@ -34,7 +37,7 @@ export function CreateToolForm() {
       console.log(error);
     } finally {
       setLoading(false);
-      router.push("/");
+      router.push("/submit");
     }
   }
 

@@ -23,6 +23,7 @@ export const Filters = () => {
     { value: "openalternative_stars_desc", label: "Stars" },
     { value: "openalternative_forks_desc", label: "Forks" },
     { value: "openalternative_lastcommit_desc", label: "Last Commit" },
+    { value: "openalternative_locs_desc", label: "Lines of Codes" },
   ];
 
   const hitsPerPageItems = [
