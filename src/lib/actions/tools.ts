@@ -241,6 +241,6 @@ export async function updateLocsForTool(
       },
     });
   } catch (error) {
-    console.error(`Failed LOCs`);
+    console.error(`Failed LOCs`, error);
   }
 }
