@@ -29,3 +29,25 @@ export const getCurrentPage = (page?: string | null) => {
     1,
   );
 };
+
+export const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+// Courtesy: dub.co
+export const setImagePath = (url: string, imageUrl: string) => {
+  if (!imageUrl) {
+    return null;
+  }
+  if (isValidUrl(imageUrl)) {
+    return imageUrl;
+  }
+  const { protocol, host } = new URL(url);
+  const baseURL = `${protocol}//${host}`;
+  return new URL(imageUrl, baseURL).toString();
+};

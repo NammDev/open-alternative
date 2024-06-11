@@ -1,8 +1,5 @@
 "use server";
 
-const GOOGLE_FAVICON_URL =
-  "https://www.google.com/s2/favicons?sz=64&domain_url=";
-
 import { Prisma } from "@prisma/client";
 import { db } from "../db";
 import { LATEST_TOOLS_TRESHOLD } from "../constants";
@@ -15,6 +12,8 @@ import {
   repositoryQuery,
   RepositoryQueryResult,
 } from "../utils/github";
+import { getOg } from "../utils/og";
+import { MetaTags } from "@/types";
 
 const toolOnePayload = Prisma.validator<Prisma.ToolInclude>()({});
 const toolManyPayload = Prisma.validator<Prisma.ToolInclude>()({});
@@ -79,20 +78,18 @@ export async function createTool(form: CreateToolSchemaType) {
     };
   }
 
-  const { name, website, repository, description } = validatedFields.data;
+  const { name, website, repository } = validatedFields.data;
+  const ogData = await getOg(website);
   const tool = await db.tool.create({
     data: {
       name,
       website,
       repository,
-      description,
       slug: slugify(name),
+      screenshotUrl: ogData?.image,
     },
   });
 
-  // Favicon - Screenshot
-
-  // api/fetch-repository
   await updateGithubForTool(repository, tool.id);
 }
 
@@ -162,8 +159,10 @@ export async function updateGithubForTool(repositoryUrl: string, id: string) {
         lastCommitDate,
         score,
         publishedAt: new Date(),
+        description: repository.description,
         faviconUrl:
-          repository.owner?.avatarUrl || `${GOOGLE_FAVICON_URL}github.com`,
+          repository.owner?.avatarUrl ||
+          `https://www.google.com/s2/favicons?sz=64&domain_url=github.com`,
 
         // Topics
         topics: {

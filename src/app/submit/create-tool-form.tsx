@@ -16,7 +16,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { CreateToolSchema, CreateToolSchemaType } from "@/lib/schemas/tool";
 import { Button } from "@/components/app-ui/Button";
 import { createTool } from "@/lib/actions/tools";
-import { redirect } from "next/navigation";
 
 export function CreateToolForm() {
   // react-hook-form

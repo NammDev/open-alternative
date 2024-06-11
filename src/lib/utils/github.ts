@@ -13,6 +13,7 @@ export type RepositoryQueryResult = {
     licenseInfo: {
       spdxId: string;
     };
+    description: string;
     owner: {
       avatarUrl: string;
     };
@@ -63,6 +64,7 @@ export const repositoryQuery = `query RepositoryQuery($owner: String!, $name: St
     owner {
       avatarUrl
     }
+    description
     mentionableUsers {
       totalCount
     }
