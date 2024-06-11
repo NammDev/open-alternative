@@ -1,4 +1,9 @@
-import { createTool, updateLOC, updateToolLicense } from "./tool";
+import {
+  createTool,
+  updateLOC,
+  updateToolLicense,
+  updateToolNoLicense,
+} from "./tool";
 
 const repositories = [
   //   {
@@ -61,42 +66,74 @@ const repositories = [
   //     github: "https://github.com/stumpapp/stump",
   //     youtube: "",
   //   },
-  {
-    website: "https://kompad.vercel.app/",
-    github: "https://github.com/hudy9x/kompad",
-    youtube: "",
-  },
-  {
-    website: "https://www.namviek.com/",
-    github: "https://github.com/hudy9x/namviek",
-    youtube: "",
-  },
-  {
-    website: "https://www.tsafi.xyz/",
-    github: "https://github.com/michaelshimeles/tsafi",
-    youtube: "",
-  },
-  {
-    website: "https://podcastr-23zf.vercel.app/",
-    github: "https://github.com/adrianhajdin/podcastr",
-    youtube: "https://www.youtube.com/watch?v=zfAb95tJvZQ",
-  },
-  {
-    website: "https://github.com/webprodigies/corinna-ai",
-    github: "https://github.com/webprodigies/corinna-ai",
-    youtube: "https://www.youtube.com/watch?v=9pCsyBlpmrc",
-  },
-  {
-    website: "https://github.com/webdevcody/bid-buddy",
-    github: "https://github.com/webdevcody/bid-buddy",
-    youtube: "https://www.youtube.com/watch?v=xF2WvGuI5Ww",
-  },
+  //   {
+  //     website: "https://kompad.vercel.app/",
+  //     github: "https://github.com/hudy9x/kompad",
+  //     youtube: "",
+  //   },
+  //   {
+  //     website: "https://www.namviek.com/",
+  //     github: "https://github.com/hudy9x/namviek",
+  //     youtube: "",
+  //   },
+  //   {
+  //     website: "https://www.tsafi.xyz/",
+  //     github: "https://github.com/michaelshimeles/tsafi",
+  //     youtube: "",
+  //   },
+  //   {
+  //     website: "https://podcastr-23zf.vercel.app/",
+  //     github: "https://github.com/adrianhajdin/podcastr",
+  //     youtube: "https://www.youtube.com/watch?v=zfAb95tJvZQ",
+  //   },
+  //   {
+  //     website: "https://github.com/webprodigies/corinna-ai",
+  //     github: "https://github.com/webprodigies/corinna-ai",
+  //     youtube: "https://www.youtube.com/watch?v=9pCsyBlpmrc",
+  //   },
+  //   {
+  //     website: "https://github.com/webdevcody/bid-buddy",
+  //     github: "https://github.com/webdevcody/bid-buddy",
+  //     youtube: "https://www.youtube.com/watch?v=xF2WvGuI5Ww",
+  //   },
+  //   {
+  //     website: "https://lingo-clone.vercel.app/",
+  //     github: "https://github.com/sanidhyy/duolingo-clone",
+  //     youtube: "https://www.youtube.com/watch?v=dP75Khfy4s4",
+  //   },
+  //   {
+  //     website: "https://quizmify.vercel.app/",
+  //     github: "https://github.com/Elliott-Chong/quizmify",
+  //     youtube: "",
+  //   },
+  //   {
+  //     website: "https://quizzzy-brown.vercel.app/",
+  //     github: "https://github.com/adam-ridhwan/quizzzy",
+  //     youtube: "",
+  //   },
+  //   {
+  //     website: "https://penx.io/",
+  //     github: "https://github.com/penxio/penx",
+  //     youtube: "",
+  //   },
+  //   {
+  //     website: "https://github.com/webprodigies/webprodigies-cypress",
+  //     github: "https://github.com/webprodigies/webprodigies-cypress",
+  //     youtube: "https://www.youtube.com/watch?v=A3l6YYkXzzg&t=7s",
+  //   },
+  //   {
+  //     website: "https://scribbly.subhambharadwaz.in/",
+  //     github: "https://github.com/subhamBharadwaz/scribbly",
+  //     youtube: "",
+  //   },
+  { website: "", github: "", youtube: "" },
   //   { website: "", github: "", youtube: "" },
 ];
 
 async function main() {
-  Promise.all(repositories.map(createTool));
+  //   Promise.all(repositories.map(createTool));
   //   Promise.all(repositories.map(updateToolLicense));
+  //   Promise.all(repositories.map(updateToolNoLicense));
   //   Promise.all(repositories.map(updateLOC));
 }
 

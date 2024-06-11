@@ -9,7 +9,6 @@ import {
 } from "@/lib/utils/github";
 import { getOg } from "@/lib/utils/og";
 import { graphql } from "@octokit/graphql";
-import { Prisma } from "@prisma/client";
 import slugify from "slugify";
 import { repositoryQueryLicense, RepositoryQueryResultLicense } from "./query";
 
@@ -23,20 +22,21 @@ export async function createTool(repository: {
   const name = repo?.name as string;
 
   const ogData = await getOg(website);
-  const tool = await db.tool.create({
-    data: {
-      name,
-      website,
-      repository: github,
-      content: "Content",
-      youtube: youtube || null,
-      slug: slugify(name),
-      screenshotUrl: ogData?.image,
-    },
-  });
-
-  await updateGithubForTool(repo?.owner, repo?.name, tool.id);
-  console.log(`Created tool ${name}`);
+  try {
+    const tool = await db.tool.create({
+      data: {
+        name,
+        website,
+        repository: github,
+        content: "Content",
+        youtube: youtube || null,
+        slug: slugify(name),
+        screenshotUrl: ogData?.image,
+      },
+    });
+  } catch (error) {
+    console.log(`Error in create tool ${name}`);
+  }
 }
 
 export async function updateToolLicense(repository: {
@@ -52,8 +52,36 @@ export async function updateToolLicense(repository: {
   });
 
   if (tool) {
-    await updateGithubForToolNoLicense(repo?.owner, repo?.name, tool.id);
-    console.log(`Updated tool license ${name}`);
+    if (tool.description === null && tool.stars === 0) {
+      await updateGithubForTool(repo?.owner, repo?.name, tool.id);
+      console.log(`Updated tool license ${name}`);
+    } else {
+      console.log(`Tool already updated ${name}`);
+    }
+  } else {
+    console.log("No tool");
+  }
+}
+
+export async function updateToolNoLicense(repository: {
+  website: string;
+  github: string;
+  youtube: string | undefined;
+}) {
+  const repo = getRepoOwnerAndName(repository.github);
+  const name = repo?.name as string;
+
+  const tool = await db.tool.findFirst({
+    where: { name },
+  });
+
+  if (tool) {
+    if (tool.description === null && tool.stars === 0) {
+      await updateGithubForToolNoLicense(repo?.owner, repo?.name, tool.id);
+      console.log(`Updated tool license ${name}`);
+    } else {
+      console.log(`Tool already updated ${name}`);
+    }
   } else {
     console.log("No tool");
   }
@@ -71,9 +99,13 @@ export async function updateLOC(repository: {
     where: { name },
   });
 
-  if (tool && tool.linesOfCode === 0) {
-    await updateLocsForTool(repo?.owner, repo?.name, tool.id);
-    console.log(`Updated tool ${name}`);
+  if (tool) {
+    if (tool.linesOfCode === 0) {
+      await updateLocsForTool(repo?.owner, repo?.name, tool.id);
+      console.log(`Updated tool ${name}`);
+    } else {
+      console.log(`Tool already updated ${name}`);
+    }
   } else {
     console.log("No tool");
   }
