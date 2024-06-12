@@ -16,10 +16,11 @@ export async function createTool(repository: {
   website: string;
   github: string;
   youtube: string | undefined;
+  name?: string;
 }) {
   const { website, github, youtube } = repository;
   const repo = getRepoOwnerAndName(github);
-  const name = repo?.name as string;
+  const name = (repository.name || repo?.name) as string;
 
   const ogData = await getOg(website);
   try {
@@ -34,6 +35,7 @@ export async function createTool(repository: {
         screenshotUrl: ogData?.image,
       },
     });
+    console.log(`Created tool ${name}`);
   } catch (error) {
     console.log(`Error in create tool ${name}`);
   }
@@ -101,8 +103,12 @@ export async function updateLOC(repository: {
 
   if (tool) {
     if (tool.linesOfCode === 0) {
-      await updateLocsForTool(repo?.owner, repo?.name, tool.id);
-      console.log(`Updated tool ${name}`);
+      try {
+        await updateLocsForTool(repo?.owner, repo?.name, tool.id);
+        console.log(`Updated tool ${name}`);
+      } catch (error) {
+        console.log("Error in update LOC", name);
+      }
     } else {
       console.log(`Tool already updated ${name}`);
     }

@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { graphql } from "@octokit/graphql";
-import { repositoryStarsQuery, RepositoryStarsQueryResult } from "@/lib/github";
+import {
+  repositoryStarsQuery,
+  RepositoryStarsQueryResult,
+} from "@/lib/utils/github";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);

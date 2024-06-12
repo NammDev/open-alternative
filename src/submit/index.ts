@@ -126,15 +126,369 @@ const repositories = [
   //     github: "https://github.com/subhamBharadwaz/scribbly",
   //     youtube: "",
   //   },
-  { website: "", github: "", youtube: "" },
-  //   { website: "", github: "", youtube: "" },
+  // {
+  //   website: "https://iotawise.rdev.pro/",
+  //   github: "https://github.com/redpangilinan/iotawise",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://demo.nextcrm.io/en/sign-in",
+  //   github: "https://github.com/pdovhomilja/nextcrm-app",
+  //   youtube: "",
+  // },
+  // {
+  //   name: "Cal",
+  //   website: "https://cal.com/",
+  //   github: "https://github.com/calcom/cal.com",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://infisical.com/",
+  //   github: "https://github.com/Infisical/infisical",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://uninbox.com/",
+  //   github: "https://github.com/un/inbox",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.getinboxzero.com/",
+  //   github: "https://github.com/elie222/inbox-zero",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://formbricks.com/",
+  //   github: "https://github.com/formbricks/formbricks",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://plane.so/",
+  //   github: "https://github.com/makeplane/plane",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://app.daily.dev/onboarding",
+  //   github: "https://github.com/dailydotdev/apps",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.papermark.io/",
+  //   github: "https://github.com/mfts/papermark",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://linkwarden.app/",
+  //   github: "https://github.com/linkwarden/linkwarden",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://documenso.com/",
+  //   github: "https://github.com/documenso/documenso",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://courselit.app/",
+  //   github: "https://github.com/codelitdev/courselit",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.openstatus.dev/",
+  //   github: "https://github.com/openstatushq/openstatus",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://twenty.com/",
+  //   github: "https://github.com/twentyhq/twenty",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://tianji.msgbyte.com/",
+  //   github: "https://github.com/msgbyte/tianji",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://formslab.vercel.app/",
+  //   github: "https://github.com/Ryczko/FormsLab",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://slug.vercel.app/",
+  //   github: "https://github.com/pheralb/slug",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://reduced.to/",
+  //   github: "https://github.com/origranot/reduced.to",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://hoarder.app/",
+  //   github: "https://github.com/hoarder-app/hoarder",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://xlog.app/",
+  //   github: "https://github.com/Crossbell-Box/xLog",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://gitroom.com/",
+  //   github: "https://github.com/gitroomhq/gitroom",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.smartexcel.cc/",
+  //   github: "https://github.com/weijunext/smart-excel-ai",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://dittofeed.com/",
+  //   github: "https://github.com/dittofeed/dittofeed",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://typehero.dev/",
+  //   github: "https://github.com/typehero/typehero",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://zipline.diced.sh/",
+  //   github: "https://github.com/diced/zipline",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://email.maocanhua.cn",
+  //   github: "https://github.com/zalify/easy-email-editor",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://next.medusajs.com/us",
+  //   github: "https://github.com/medusajs/nextjs-starter-medusa",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://payloadcms.com/",
+  //   github: "https://github.com/joschan21/digitalhippo",
+  //   youtube: "https://www.youtube.com/watch?v=06g6YJ6JCJU",
+  // },
+  // {
+  //   website: "https://github.com/joschan21/magicsearch",
+  //   github: "https://github.com/joschan21/magicsearch",
+  //   youtube: "https://www.youtube.com/watch?v=_cqFkK3WLvg",
+  // },
+  // {
+  //   website: "https://github.com/joschan21/filtering-system",
+  //   github: "https://github.com/joschan21/filtering-system",
+  //   youtube: "https://www.youtube.com/watch?v=_017xTgnqGw",
+  // },
+  // {
+  //   website: "https://civitai.com/",
+  //   github: "https://github.com/civitai/civitai",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://onestopshop.jackblatch.com/",
+  //   github: "https://github.com/jackblatch/OneStopShop",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://evershop.io/",
+  //   github: "https://github.com/evershopcommerce/evershop",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://demo.vercel.store/",
+  //   github: "https://github.com/vercel/commerce",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://flair.vercel.app/",
+  //   github: "https://github.com/adam-ridhwan/flair",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://commerce.blazity.com/",
+  //   github: "https://github.com/Blazity/enterprise-commerce",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "http://shop.huanghanlian.com/",
+  //   github: "https://github.com/huanghanzhilian/c-shopping",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://github.com/webprodigies/fuzzie-production",
+  //   github: "https://github.com/webprodigies/fuzzie-production",
+  //   youtube: "https://www.youtube.com/watch?v=XkOXNlHJP6M",
+  // },
+  // {
+  //   website: "https://github.com/webprodigies/plura-production",
+  //   github: "https://github.com/webprodigies/plura-production",
+  //   youtube: "https://www.youtube.com/watch?v=6omuUOZcWL",
+  // },
+  // {
+  //   website: "https://www.open-resume.com/",
+  //   github: "https://github.com/xitanggg/open-resume",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://rxresu.me/",
+  //   github: "https://github.com/AmruthPillai/Reactive-Resume",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://furniro-ecommerce-blue.vercel.app/",
+  //   github: "https://github.com/PiusLucky/furniro-ecommerce",
+  //   youtube: "https://www.youtube.com/watch?v=KifP9huzlD4",
+  // },
+  // {
+  //   website: "https://chadnext.moinulmoin.com/en/",
+  //   github: "https://github.com/moinulmoin/chadnext",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://resumake.io/",
+  //   github: "https://github.com/saadq/resumake.io",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://shadcn-landing-page.vercel.app/",
+  //   github: "https://github.com/leoMirandaa/shadcn-landing-page",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://meteo-nix.vercel.app/",
+  //   github: "https://github.com/DariusLukasukas/nextjs-weather-app",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.ub.cafe/",
+  //   github: "https://github.com/timtbdev/Next.js-Blog-App",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://notion-avatar.vercel.app/",
+  //   github: "https://github.com/Mayandev/notion-avatar",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://next-saas-stripe-starter.vercel.app/",
+  //   github: "https://github.com/mickasmt/next-saas-stripe-starter",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://freelance.shellbear.me/",
+  //   github: "https://github.com/shellbear/freelance",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://openbio.app/",
+  //   github: "https://github.com/vanxh/openbio",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://ledgity.finance/",
+  //   github: "https://github.com/LedgityLabs/LedgityYield",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://rao.pics/",
+  //   github: "https://github.com/meetqy/rao-pics",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://startertab.com/landingpad",
+  //   github: "https://github.com/allister-grange/startertab",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://og.anuragroy.dev/",
+  //   github: "https://github.com/anurag-roy/og.anuragroy.dev",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://packagepeek.com/",
+  //   github: "https://github.com/arthureberledev/packagepeek",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.roomgpt.io/",
+  //   github: "https://github.com/Nutlope/roomGPT",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.explorecareers.io/",
+  //   github: "https://github.com/Nutlope/explorecareers",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://pixel-craft-ten.vercel.app/",
+  //   github: "https://github.com/adam-ridhwan/pixel-craft",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://llm.report/",
+  //   github: "https://github.com/dillionverma/llm.report",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.rapidpages.com/",
+  //   github: "https://github.com/rapidpages/rapidpages",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.riffusion.com/",
+  //   github: "https://github.com/riffusion/riffusion-app",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://photoshot.app/",
+  //   github: "https://github.com/baptadn/photoshot",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://emojis.sh/",
+  //   github: "https://github.com/pondorasti/emojis",
+  //   youtube: "",
+  // },
+  {
+    website: "https://david-goggins-ai-coach-yt.vercel.app/",
+    github: "https://github.com/bhancockio/david-goggins-ai-coach-yt",
+    youtube: "https://www.youtube.com/watch?v=b1S04PFjIOY",
+  },
+  {
+    website: "https://www.restorephotos.io/",
+    github: "https://github.com/Nutlope/restorePhotos",
+    youtube: "",
+  },
+  {
+    website: "https://www.twitterbio.io/",
+    github: "https://github.com/Nutlope/twitterbio",
+    youtube: "",
+  },
+  {
+    website: "https://www.getheadshots.ai/",
+    github: "https://github.com/astriaai/headshots-starter",
+    youtube: "",
+  },
+  {
+    website: "https://fullstackopen.com/en/",
+    github: "https://github.com/fullstack-hy2020/fullstack-hy2020.github.io",
+    youtube: "",
+  },
+  // {
+  //   website: "",
+  //   github: "",
+  //   youtube: "",
+  // },
 ];
 
 async function main() {
-  //   Promise.all(repositories.map(createTool));
-  //   Promise.all(repositories.map(updateToolLicense));
-  //   Promise.all(repositories.map(updateToolNoLicense));
-  //   Promise.all(repositories.map(updateLOC));
+  // Promise.all(repositories.map(createTool));
+  Promise.all(repositories.map(updateToolLicense));
+  // Promise.all(repositories.map(updateToolNoLicense));
+  // Promise.all(repositories.map(updateLOC));
 }
 
 main()
