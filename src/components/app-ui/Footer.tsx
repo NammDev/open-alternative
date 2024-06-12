@@ -22,9 +22,9 @@ export const Footer = ({
 
         <Link
           className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm -tracking-micro text-muted hover:text-foreground disabled:opacity-50"
-          href="/alternatives"
+          href="/technologies"
         >
-          Alternatives
+          Technologies
         </Link>
         <Link
           className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm -tracking-micro text-muted hover:text-foreground disabled:opacity-50"

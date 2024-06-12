@@ -6,53 +6,50 @@ import { Grid } from "@/components/app-ui/Grid";
 import { H3 } from "@/components/app-ui/Heading";
 import { Intro } from "@/components/app-ui/Intro";
 import { ToolRecord } from "@/components/app-ui/ToolRecord";
-import { getAlternativesBySlug } from "@/lib/actions/alternatives";
+import { getTechnologysBySlug } from "@/lib/actions/technology";
 import { MoveRightIcon } from "lucide-react";
 import Link from "next/link";
 
-export default async function AlternativesPage({
+export default async function TechnologiesPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const alternative = await getAlternativesBySlug(params.slug);
+  const technogoly = await getTechnologysBySlug(params.slug);
   const meta = {
-    title: `Best Open Source ${alternative.name} Alternatives`,
-    description: `A collection of the best open source ${alternative.name} alternatives. Find the best alternatives for ${alternative.name} that are open source and free to use/self-hostable.`,
+    title: `Best Open Source ${technogoly.name} NextJs`,
+    description: `A collection of the best open source ${technogoly.name} NextJs. Find the best NextJs for ${technogoly.name} that are open source and free to use/self-hostable.`,
   };
 
   return (
     <>
       <Intro
         title={meta.title}
-        description={`Find the best alternatives to ${alternative.name} that are open source and free to use/self-hostable.`}
+        description={`Find the best NextJs to ${technogoly.name} that are open source and free to use/self-hostable.`}
       />
 
       <Grid>
         <Card className="group bg-background" asChild>
           <Link
-            href={alternative.website}
+            href={technogoly.website}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
             <Card.Header>
-              <Favicon src={alternative.faviconUrl} title={alternative.name} />
+              <Favicon src={technogoly.faviconUrl} title={technogoly.name} />
 
-              <H3 className="truncate">{alternative.name}</H3>
+              <H3 className="truncate">{technogoly.name}</H3>
             </Card.Header>
 
-            {alternative.description && (
+            {technogoly.description && (
               <p className="-tracking-0.5 relative line-clamp-4 text-sm/normal text-secondary">
-                {alternative.description}
+                {technogoly.description}
               </p>
             )}
 
             <Button
-              variant={
-                alternative.website.includes("go.") ? "fancy" : "primary"
-              }
               size="md"
-              className="pointer-events-none mt-auto"
+              className="pointer-events-none mt-auto border-transparent bg-pink-600 text-white hover:bg-pink-700"
               suffix={
                 <MoveRightIcon className="duration-150 group-hover:translate-x-0.5" />
               }
@@ -63,16 +60,16 @@ export default async function AlternativesPage({
           </Link>
         </Card>
 
-        {alternative.tools.map(({ tool }) => (
+        {technogoly.tools.map(({ tool }) => (
           <ToolRecord key={tool.id} tool={tool} />
         ))}
 
-        {!alternative.tools?.length && (
-          <p className="col-span-full">No Open Source alternatives found.</p>
+        {!technogoly.tools?.length && (
+          <p className="col-span-full">No Open Source Nextjs found.</p>
         )}
       </Grid>
 
-      <BackButton href="/alternatives" />
+      <BackButton href="/technologies" />
     </>
   );
 }

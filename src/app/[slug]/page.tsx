@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { AlternativeRecord } from "@/components/app-ui/AlternativeRecord";
 import { BackButton } from "@/components/app-ui/BackButton";
 import { Button } from "@/components/app-ui/Button";
 import { FaviconImage } from "@/components/app-ui/Favicon";
@@ -9,13 +8,14 @@ import { Prose } from "@/components/app-ui/Prose";
 import { RepositoryDetails } from "@/components/app-ui/RepositoryDetails";
 import { Series } from "@/components/app-ui/Series";
 import { Tag } from "@/components/app-ui/Tag";
+import { TechnologyRecord } from "@/components/app-ui/TechnologyRecord";
 import { ToolRecord } from "@/components/app-ui/ToolRecord";
-import { getAlternatives } from "@/lib/actions/alternativetotool";
 import {
   getCategoriesTool,
   getToolsRelated,
 } from "@/lib/actions/categorytotool";
 import { getLanguages } from "@/lib/actions/languagetotool";
+import { getTechnologys } from "@/lib/actions/technologyToTool";
 import { getTool } from "@/lib/actions/tools";
 import { getTopics } from "@/lib/actions/topictotool";
 import { HashIcon, MoveRightIcon, TagIcon } from "lucide-react";
@@ -28,10 +28,10 @@ export default async function ToolsPage({
     slug: string;
   };
 }) {
-  const [tool, alternatives, categories, languages, topics, relatedTools] =
+  const [tool, technologies, categories, languages, topics, relatedTools] =
     await Promise.all([
       getTool(slug),
-      getAlternatives(slug),
+      getTechnologys(slug),
       getCategoriesTool(slug),
       getLanguages(slug),
       getTopics(slug),
@@ -165,16 +165,13 @@ export default async function ToolsPage({
         </div>
       </div>
 
-      {!!alternatives.length && (
+      {!!technologies.length && (
         <Series size="lg" direction="column">
-          <H4 as="h3">{tool.name} is an Open Source alternative to:</H4>
+          <H4 as="h3">{tool.name} is an Open Source technology to:</H4>
 
           <Grid className="w-full">
-            {alternatives?.map(({ alternative }) => (
-              <AlternativeRecord
-                key={alternative.id}
-                alternative={alternative}
-              />
+            {technologies?.map(({ technology }) => (
+              <TechnologyRecord key={technology.id} technology={technology} />
             ))}
           </Grid>
         </Series>
@@ -182,9 +179,7 @@ export default async function ToolsPage({
 
       {!!relatedTools.length && (
         <Series size="lg" direction="column">
-          <H4 as="h3">
-            Other Open Source Alternatives similar to {tool.name}:
-          </H4>
+          <H4 as="h3">Other Open Source Nextjs similar to {tool.name}:</H4>
 
           <Grid className="w-full">
             {relatedTools.map(({ tool }) => (

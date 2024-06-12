@@ -51,7 +51,7 @@ export default function RootLayout({
             <hr className="mt-auto peer-[[href]]:mt-0" />
             <Newsletter
               title="Newsletter"
-              description="Get updates on new tools, alternatives, and other cool stuff."
+              description="Get updates on new tools and other cool stuff."
             />
             <Footer />
           </div>

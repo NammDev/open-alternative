@@ -5,7 +5,7 @@ import { CreateToolForm } from "./create-tool-form";
 
 const meta = {
   title: "Submit your Open Source Software",
-  description: `Help us grow the list of open source alternatives to proprietary software. Contribute to ${SITE_NAME} by submitting a new open source alternative.`,
+  description: `Help us grow the list of open source nextjs to proprietary software. Contribute to ${SITE_NAME} by submitting a new open source nextjs.`,
 };
 
 export default function SubmitPage() {
@@ -24,7 +24,7 @@ export default function SubmitPage() {
             <li>It’s open source</li>
             <li>It’s free to use or can be self-hosted</li>
             <li>It’s actively maintained</li>
-            <li>It’s a good alternative to a proprietary software</li>
+            <li>It’s a good Nextjs to a proprietary software</li>
           </ul>
         </Prose>
       </div>

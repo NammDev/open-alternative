@@ -1,7 +1,7 @@
-import { db } from "./lib/db";
+import { db } from "@/lib/db";
 
 async function main() {
-  await db.alternativeToTool.deleteMany();
+  await db.technologyToTool.deleteMany();
   await db.categoryToTools.deleteMany();
   await db.topicToTool.deleteMany();
   await db.languageToTool.deleteMany();
@@ -10,6 +10,7 @@ async function main() {
   await db.tool.deleteMany();
   await db.topic.deleteMany();
   await db.language.deleteMany();
+  await db.technology.deleteMany();
   // Add more deleteMany calls for other models as needed
 }
 

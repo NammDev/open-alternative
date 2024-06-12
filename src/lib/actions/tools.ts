@@ -38,9 +38,9 @@ export const getTools = async () => {
     .findMany({
       where: { publishedAt: { lte: new Date() } },
       include: {
-        alternatives: {
-          orderBy: { alternative: { name: "asc" } },
-          include: { alternative: { select: { name: true } } },
+        technologies: {
+          orderBy: { technology: { name: "asc" } },
+          include: { technology: { select: { name: true } } },
         },
         categories: {
           orderBy: { category: { name: "asc" } },
@@ -59,8 +59,8 @@ export const getTools = async () => {
     .then((tools) =>
       tools.map((tool) => ({
         ...tool,
-        alternatives: tool.alternatives.map(
-          ({ alternative }) => alternative.name,
+        technologies: tool.technologies.map(
+          ({ technology }) => technology.name,
         ),
         categories: tool.categories.map(({ category }) => category.name),
         languages: tool.languages.map(({ language }) => language.name),

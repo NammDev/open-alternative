@@ -32,7 +32,7 @@ export const SponsoredCard = () => {
           />
 
           <H4 as="h3" className="truncate">
-            {sponsoring?.name || "Sponsor OpenAlternative"}
+            {sponsoring?.name || "Sponsor OpenNextjs"}
           </H4>
         </Card.Header>
 

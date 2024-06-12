@@ -7,11 +7,6 @@ import {
 
 const repositories = [
   //   {
-  //     website: "https://openalternative.co/",
-  //     github: "https://github.com/piotrkulpinski/openalternative",
-  //     youtube: "",
-  //   },
-  //   {
   //     website: "https://oss.gallery/",
   //     github: "https://github.com/dubinc/oss-gallery",
   //     youtube: "",

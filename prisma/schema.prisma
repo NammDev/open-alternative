@@ -21,29 +21,29 @@ model Sponsoring {
 }
 
 model Tool {
-  id             String              @id @default(cuid())
+  id             String             @id @default(cuid())
   name           String
-  slug           String              @unique
-  website        String              @unique
-  repository     String              @unique
+  slug           String             @unique
+  website        String             @unique
+  repository     String             @unique
   content        String?
   youtube        String?
   description    String?
-  stars          Int                 @default(0)
-  forks          Int                 @default(0)
+  stars          Int                @default(0)
+  forks          Int                @default(0)
   license        String?
-  score          Int                 @default(0)
-  linesOfCode    Int                 @default(0)
-  files          Int                 @default(0)
+  score          Int                @default(0)
+  linesOfCode    Int                @default(0)
+  files          Int                @default(0)
   bump           Int?
   faviconUrl     String?
   screenshotUrl  String?
-  isFeatured     Boolean             @default(false)
+  isFeatured     Boolean            @default(false)
   lastCommitDate DateTime?
   publishedAt    DateTime?
-  updatedAt      DateTime            @updatedAt
-  createdAt      DateTime            @default(now())
-  alternatives   AlternativeToTool[]
+  updatedAt      DateTime           @updatedAt
+  createdAt      DateTime           @default(now())
+  technologies   TechnologyToTool[]
   categories     CategoryToTools[]
   languages      LanguageToTool[]
   topics         TopicToTool[]
@@ -51,16 +51,16 @@ model Tool {
   @@index([id, slug])
 }
 
-model Alternative {
-  id          String              @id @default(cuid())
+model Technology {
+  id          String             @id @default(cuid())
   name        String
-  slug        String              @unique
+  slug        String             @unique
   description String?
-  website     String              @unique
+  website     String             @unique
   faviconUrl  String?
-  updatedAt   DateTime            @updatedAt
-  createdAt   DateTime            @default(now())
-  tools       AlternativeToTool[]
+  updatedAt   DateTime           @updatedAt
+  createdAt   DateTime           @default(now())
+  tools       TechnologyToTool[]
 }
 
 model Category {
@@ -88,13 +88,13 @@ model Topic {
   tools     TopicToTool[]
 }
 
-model AlternativeToTool {
-  toolId        String
-  alternativeId String
-  tool          Tool        @relation(fields: [toolId], references: [id])
-  alternative   Alternative @relation(fields: [alternativeId], references: [id])
+model TechnologyToTool {
+  toolId       String
+  technologyId String
+  tool         Tool       @relation(fields: [toolId], references: [id])
+  technology   Technology @relation(fields: [technologyId], references: [id])
 
-  @@id([toolId, alternativeId])
+  @@id([toolId, technologyId])
 }
 
 model CategoryToTools {

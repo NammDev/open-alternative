@@ -16,7 +16,7 @@ export const Refinements = ({
       {...props}
     >
       <RefinementList attribute="categories" showMoreLimit={256} showMore />
-      <RefinementList attribute="alternatives" showMoreLimit={256} showMore />
+      <RefinementList attribute="technologies" showMoreLimit={256} showMore />
       <RefinementList attribute="languages" showMoreLimit={256} showMore />
       <RefinementList attribute="topics" showMoreLimit={512} showMore />
 

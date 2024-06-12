@@ -120,9 +120,9 @@ export const Header = () => {
             <DropdownMenuItem asChild>
               <Link
                 className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm -tracking-micro text-muted hover:text-foreground disabled:opacity-50"
-                href="/alternatives"
+                href="/technologies"
               >
-                <SmilePlusIcon className="size-4 opacity-75" /> Alternatives
+                <SmilePlusIcon className="size-4 opacity-75" /> Technologies
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
@@ -218,9 +218,9 @@ export const Header = () => {
           </Link>
           <Link
             className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm -tracking-micro text-muted hover:text-foreground disabled:opacity-50"
-            href="/alternatives"
+            href="/technologies"
           >
-            Alternatives
+            Technologies
           </Link>
           <Link
             className="group -m-0.5 flex cursor-pointer items-center gap-2 p-0.5 text-sm -tracking-micro text-muted hover:text-foreground disabled:opacity-50"

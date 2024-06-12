@@ -13,7 +13,7 @@ export default function SubmitPage() {
   const meta = {
     title: "Supercharge your sales with sponsored listing",
     description:
-      "Ensure the long-term success and growth of your business by sponsoring our comprehensive open source directory. Your support helps promote open source alternatives, fosters innovation, and makes a lasting positive impact.",
+      "Ensure the long-term success and growth of your business by sponsoring our comprehensive open source directory. Your support helps promote open source nextjs, fosters innovation, and makes a lasting positive impact.",
   };
   const benefits = [
     {

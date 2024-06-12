@@ -8,25 +8,25 @@ export default function AboutPage() {
     <>
       <Intro
         title="About Us"
-        description={`${SITE_NAME} is a community driven list of open source alternatives to proprietary software and applications.`}
+        description={`${SITE_NAME} is a community driven list of open source nextjs to proprietary software and applications.`}
       />
 
       <Featured />
 
       <Prose>
-        <h2>What is OpenAlternative?</h2>
+        <h2>What is OpenNextjs?</h2>
         <p>
-          <a href="https://openalternative.co" title={SITE_TAGLINE}>
-            OpenAlternative
+          <a href="https://opennextjs.co" title={SITE_TAGLINE}>
+            OpenNextjs
           </a>{" "}
-          is a community driven list of open source alternatives to proprietary
+          is a community driven list of open source nextjs to proprietary
           software and applications. The goal of the site is to be your first
           stop when researching for a new open source service to help you grow
-          your business. It will help you find alternatives and reviews of the
+          your business. It will help you find nextjs and reviews of the
           products you already use.
         </p>
 
-        <h2>How did OpenAlternative get started?</h2>
+        <h2>How did OpenNextjs get started?</h2>
 
         <p>
           The project started as a weekend project to learn a new technology and
@@ -49,8 +49,8 @@ export default function AboutPage() {
         <p>
           I’ve always been a fan of open source software and I’ve always wanted
           to contribute to the community in some way. I thought that creating a
-          list of open source alternatives to proprietary software and
-          applications would be a great way to give back to the community.
+          list of open source nextjs to proprietary software and applications
+          would be a great way to give back to the community.
         </p>
 
         <h2>Tools Used</h2>
@@ -119,12 +119,12 @@ export default function AboutPage() {
 
         <h2>Contribute</h2>
         <p>
-          If you have any suggestions for open source alternatives to
-          proprietary software and applications, feel free to contribute to the
-          list. You can also contribute by suggesting new categories or
-          improving the website. The source code is available on{" "}
+          If you have any suggestions for open source nextjs to proprietary
+          software and applications, feel free to contribute to the list. You
+          can also contribute by suggesting new categories or improving the
+          website. The source code is available on{" "}
           <a
-            href="https://github.com/piotrkulpinski/openalternative"
+            href="https://github.com/piotrkulpinski/OpenNextjs"
             target="_blank"
             rel="noreferrer nofollow"
           >
