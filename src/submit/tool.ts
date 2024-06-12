@@ -12,12 +12,14 @@ import { graphql } from "@octokit/graphql";
 import slugify from "slugify";
 import { repositoryQueryLicense, RepositoryQueryResultLicense } from "./query";
 
-export async function createTool(repository: {
+type RepositorySubmit = {
   website: string;
   github: string;
   youtube: string | undefined;
   name?: string;
-}) {
+};
+
+export async function createTool(repository: RepositorySubmit) {
   const { website, github, youtube } = repository;
   const repo = getRepoOwnerAndName(github);
   const name = (repository.name || repo?.name) as string;
@@ -41,13 +43,9 @@ export async function createTool(repository: {
   }
 }
 
-export async function updateToolLicense(repository: {
-  website: string;
-  github: string;
-  youtube: string | undefined;
-}) {
+export async function updateToolLicense(repository: RepositorySubmit) {
   const repo = getRepoOwnerAndName(repository.github);
-  const name = repo?.name as string;
+  const name = (repository.name || repo?.name) as string;
 
   const tool = await db.tool.findFirst({
     where: { name },
@@ -55,7 +53,7 @@ export async function updateToolLicense(repository: {
 
   if (tool) {
     if (tool.description === null && tool.stars === 0) {
-      await updateGithubForTool(repo?.owner, repo?.name, tool.id);
+      await updateGithubForTool(repo?.owner, name, tool.id);
       console.log(`Updated tool license ${name}`);
     } else {
       console.log(`Tool already updated ${name}`);
@@ -65,13 +63,9 @@ export async function updateToolLicense(repository: {
   }
 }
 
-export async function updateToolNoLicense(repository: {
-  website: string;
-  github: string;
-  youtube: string | undefined;
-}) {
+export async function updateToolNoLicense(repository: RepositorySubmit) {
   const repo = getRepoOwnerAndName(repository.github);
-  const name = repo?.name as string;
+  const name = (repository.name || repo?.name) as string;
 
   const tool = await db.tool.findFirst({
     where: { name },
@@ -79,7 +73,7 @@ export async function updateToolNoLicense(repository: {
 
   if (tool) {
     if (tool.description === null && tool.stars === 0) {
-      await updateGithubForToolNoLicense(repo?.owner, repo?.name, tool.id);
+      await updateGithubForToolNoLicense(repo?.owner, name, tool.id);
       console.log(`Updated tool license ${name}`);
     } else {
       console.log(`Tool already updated ${name}`);
@@ -89,13 +83,9 @@ export async function updateToolNoLicense(repository: {
   }
 }
 
-export async function updateLOC(repository: {
-  website: string;
-  github: string;
-  youtube: string | undefined;
-}) {
+export async function updateLOC(repository: RepositorySubmit) {
   const repo = getRepoOwnerAndName(repository.github);
-  const name = repo?.name as string;
+  const name = (repository.name || repo?.name) as string;
 
   const tool = await db.tool.findFirst({
     where: { name },
@@ -104,7 +94,7 @@ export async function updateLOC(repository: {
   if (tool) {
     if (tool.linesOfCode === 0) {
       try {
-        await updateLocsForTool(repo?.owner, repo?.name, tool.id);
+        await updateLocsForTool(repo?.owner, name, tool.id);
         console.log(`Updated tool ${name}`);
       } catch (error) {
         console.log("Error in update LOC", name);

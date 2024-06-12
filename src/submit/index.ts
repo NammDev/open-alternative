@@ -452,41 +452,62 @@ const repositories = [
   //   github: "https://github.com/pondorasti/emojis",
   //   youtube: "",
   // },
-  {
-    website: "https://david-goggins-ai-coach-yt.vercel.app/",
-    github: "https://github.com/bhancockio/david-goggins-ai-coach-yt",
-    youtube: "https://www.youtube.com/watch?v=b1S04PFjIOY",
-  },
-  {
-    website: "https://www.restorephotos.io/",
-    github: "https://github.com/Nutlope/restorePhotos",
-    youtube: "",
-  },
-  {
-    website: "https://www.twitterbio.io/",
-    github: "https://github.com/Nutlope/twitterbio",
-    youtube: "",
-  },
-  {
-    website: "https://www.getheadshots.ai/",
-    github: "https://github.com/astriaai/headshots-starter",
-    youtube: "",
-  },
-  {
-    website: "https://fullstackopen.com/en/",
-    github: "https://github.com/fullstack-hy2020/fullstack-hy2020.github.io",
-    youtube: "",
-  },
   // {
-  //   website: "",
-  //   github: "",
+  //   website: "https://david-goggins-ai-coach-yt.vercel.app/",
+  //   github: "https://github.com/bhancockio/david-goggins-ai-coach-yt",
+  //   youtube: "https://www.youtube.com/watch?v=b1S04PFjIOY",
+  // },
+  // {
+  //   website: "https://www.restorephotos.io/",
+  //   github: "https://github.com/Nutlope/restorePhotos",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.twitterbio.io/",
+  //   github: "https://github.com/Nutlope/twitterbio",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://www.getheadshots.ai/",
+  //   github: "https://github.com/astriaai/headshots-starter",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://fullstackopen.com/en/",
+  //   github: "https://github.com/fullstack-hy2020/fullstack-hy2020.github.io",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://bmrk.cc/",
+  //   github: "https://github.com/gokulkrishh/bmrk.cc",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://github.com/joschan21/casecobra",
+  //   github: "https://github.com/joschan21/casecobra",
+  //   youtube: "https://www.youtube.com/watch?v=SG82Aqcaaa0",
+  // },
+  // {
+  //   website: "https://subs.is/",
+  //   github: "https://github.com/gokulkrishh/subs.is",
+  //   youtube: "",
+  // },
+  // {
+  //   name: "Portfolio Sidebar",
+  //   website: "https://onur.dev/",
+  //   github: "https://github.com/suyalcinkaya/onur.dev",
+  //   youtube: "",
+  // },
+  // {
+  //   website: "https://cv.jarocki.me/",
+  //   github: "https://github.com/BartoszJarocki/cv",
   //   youtube: "",
   // },
 ];
 
 async function main() {
   // Promise.all(repositories.map(createTool));
-  Promise.all(repositories.map(updateToolLicense));
+  // Promise.all(repositories.map(updateToolLicense));
   // Promise.all(repositories.map(updateToolNoLicense));
   // Promise.all(repositories.map(updateLOC));
 }
