@@ -121,7 +121,6 @@ function CreateCategoryDialog() {
           <DialogClose asChild>
             <Button
               type="button"
-              variant={"secondary"}
               onClick={() => {
                 form.reset();
               }}

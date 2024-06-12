@@ -4,7 +4,12 @@ import { Prisma } from "@prisma/client";
 import { db } from "../db";
 import { LATEST_TOOLS_TRESHOLD } from "../constants";
 import slugify from "slugify";
-import { CreateToolSchema, CreateToolSchemaType } from "../schemas/tool";
+import {
+  EditToolSchema,
+  CreateToolSchema,
+  CreateToolSchemaType,
+  EditToolSchemaType,
+} from "../schemas/tool";
 import { getRepoOwnerAndName } from "../utils";
 import { graphql } from "@octokit/graphql";
 import {
@@ -13,7 +18,6 @@ import {
   RepositoryQueryResult,
 } from "../utils/github";
 import { getOg } from "../utils/og";
-import { MetaTags } from "@/types";
 
 const toolOnePayload = Prisma.validator<Prisma.ToolInclude>()({});
 const toolManyPayload = Prisma.validator<Prisma.ToolInclude>()({});
@@ -243,4 +247,44 @@ export async function updateLocsForTool(
   } catch (error) {
     console.error(`Failed LOCs`, error);
   }
+}
+
+export async function editTool(form: EditToolSchemaType, slug: string) {
+  const tool = await db.tool.findUnique({
+    where: { slug },
+  });
+  if (!tool) throw new Error(`Tool with slug ${slug} not found`);
+
+  const parsedBody = EditToolSchema.safeParse(form);
+  if (!parsedBody.success) throw new Error("bad request");
+
+  const categories = parsedBody.data.categories?.map((id) => ({ id })) ?? [];
+
+  const existCategories = await db.category.findMany({
+    where: {
+      id: {
+        in: categories.map(({ id }) => id),
+      },
+    },
+  });
+
+  return await db.tool.update({
+    where: { slug },
+    data: {
+      categories: {
+        deleteMany: {},
+        connectOrCreate: existCategories.map(({ id, name, slug }) => ({
+          where: { toolId_categoryId: { toolId: tool.id, categoryId: id } },
+          create: {
+            category: {
+              connectOrCreate: {
+                where: { slug },
+                create: { name, slug },
+              },
+            },
+          },
+        })),
+      },
+    },
+  });
 }

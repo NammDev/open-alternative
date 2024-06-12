@@ -20,6 +20,7 @@ import { getTool } from "@/lib/actions/tools";
 import { getTopics } from "@/lib/actions/topictotool";
 import { HashIcon, MoveRightIcon, TagIcon } from "lucide-react";
 import { notFound } from "next/navigation";
+import EditToolDialog from "./edit-tool";
 
 export default async function ToolsPage({
   params: { slug },
@@ -76,20 +77,23 @@ export default async function ToolsPage({
             </div>
 
             {tool.website && (
-              <Button
-                suffix={
-                  <MoveRightIcon className="duration-150 group-hover:translate-x-0.5" />
-                }
-                asChild
-              >
-                <a
-                  href={tool.website}
-                  target="_blank"
-                  rel="nofollow noreferrer"
+              <div className="flex">
+                <Button
+                  suffix={
+                    <MoveRightIcon className="duration-150 group-hover:translate-x-0.5" />
+                  }
+                  asChild
                 >
-                  View Website
-                </a>
-              </Button>
+                  <a
+                    href={tool.website}
+                    target="_blank"
+                    rel="nofollow noreferrer"
+                  >
+                    View Website
+                  </a>
+                </Button>
+                <EditToolDialog slug={slug} categoriesByTool={categories} />
+              </div>
             )}
             {tool.youtube && (
               <Button
@@ -167,7 +171,7 @@ export default async function ToolsPage({
 
       {!!technologies.length && (
         <Series size="lg" direction="column">
-          <H4 as="h3">{tool.name} is an Open Source technology to:</H4>
+          <H4 as="h3">{tool.name} use theses Technologies & NPM:</H4>
 
           <Grid className="w-full">
             {technologies?.map(({ technology }) => (

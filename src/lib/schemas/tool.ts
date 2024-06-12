@@ -15,3 +15,9 @@ export const CreateToolSchema = z.object({
 });
 
 export type CreateToolSchemaType = z.infer<typeof CreateToolSchema>;
+
+export const EditToolSchema = z.object({
+  categories: z.array(z.string()).optional(),
+});
+
+export type EditToolSchemaType = z.infer<typeof EditToolSchema>;
