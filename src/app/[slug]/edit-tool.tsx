@@ -32,6 +32,7 @@ import { editTool } from "@/lib/actions/tools";
 import { Checkbox } from "@/components/ui/checkbox";
 import { getCategories } from "@/lib/actions/categories";
 import { getCategoriesTool } from "@/lib/actions/categorytotool";
+import { useRouter } from "next/navigation";
 
 function EditToolDialog({
   slug,
@@ -40,6 +41,7 @@ function EditToolDialog({
   slug: string;
   categoriesByTool: any;
 }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const categoriesQuery = useQuery({
@@ -58,7 +60,8 @@ function EditToolDialog({
   const { mutate, isPending } = useMutation({
     mutationFn: (values: EditToolSchemaType) => editTool(values, slug),
     onSuccess: async () => {
-      form.reset({});
+      toast.success("Tool updated successfully 🎉");
+      router.push("/");
       setOpen((prev) => !prev);
     },
     onError: () => {},
@@ -66,7 +69,6 @@ function EditToolDialog({
 
   const onSubmit = useCallback(
     (values: EditToolSchemaType) => {
-      toast.loading("Edit Tool...");
       mutate(values);
     },
     [mutate],

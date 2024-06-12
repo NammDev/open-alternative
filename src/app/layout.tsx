@@ -8,6 +8,7 @@ import { Header } from "@/components/layouts/header";
 import { Footer } from "@/components/app-ui/Footer";
 import { Newsletter } from "@/components/app-ui/Newsletter";
 import { Provider } from "@/components/layouts/providers";
+import { Toaster } from "@/components/ui/toaster";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -56,6 +57,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </Provider>
+        <Toaster />
         {/* <ScrollRestoration /> */}
       </body>
     </html>
