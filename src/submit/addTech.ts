@@ -9,13 +9,13 @@ type TechnologySubmit = {
 
 const technologies: TechnologySubmit[] = [
   {
-    name: "ReactHookForm",
-    website: "https://react-hook-form.com/",
+    name: "Upstash",
+    website: "https://upstash.com/",
   },
-  //   {
-  //     name: "",
-  //     website: "",
-  //   },
+  {
+    name: "Redis",
+    website: "https://redis.io/",
+  },
   //   {
   //     name: "",
   //     website: "",

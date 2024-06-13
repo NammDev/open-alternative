@@ -498,13 +498,23 @@ const repositories = [
   //   github: "https://github.com/BartoszJarocki/cv",
   //   youtube: "",
   // },
+  {
+    website: "https://dub.co/",
+    github: "https://github.com/dubinc/dub",
+    youtube: "",
+  },
+  {
+    website: "https://extrapolate.app/",
+    github: "https://github.com/steven-tey/extrapolate",
+    youtube: "",
+  },
 ];
 
 async function main() {
   // Promise.all(repositories.map(createTool));
   // Promise.all(repositories.map(updateToolLicense));
   // Promise.all(repositories.map(updateToolNoLicense));
-  // Promise.all(repositories.map(updateLOC));
+  Promise.all(repositories.map(updateLOC));
 }
 
 main()
