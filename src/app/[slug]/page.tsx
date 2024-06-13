@@ -103,10 +103,10 @@ export default async function ToolsPage({
                   slug={slug}
                   technologiesByTool={technologies}
                 />
-                <EditDescriptionDialog
+                {/* <EditDescriptionDialog
                   slug={slug}
                   description={tool.description || ""}
-                />
+                /> */}
                 {tool.content && (
                   <EditContentToolDialog slug={slug} content={tool.content} />
                 )}
