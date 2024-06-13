@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CircleOff, Loader2, PlusSquare } from "lucide-react";
+import { CircleOff, Edit2Icon, Loader2, PlusSquare } from "lucide-react";
 import React, { ReactNode, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -82,9 +82,8 @@ function CreateCategoryDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="gap-2 text-sm">
-          <PlusSquare className="h-4 w-4" />
-          Create category
+        <Button className="ml-8 gap-2 text-sm">
+          <Edit2Icon className="h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent>

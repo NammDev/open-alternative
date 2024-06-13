@@ -16,7 +16,9 @@ export default async function CategoriesIndex() {
   return (
     <>
       <Intro {...meta} />
-      <CreateCategoryDialog />
+      <div className="flex">
+        <CreateCategoryDialog />
+      </div>
       <Grid className="md:gap-8">
         {categories.map((category) => (
           <CategoryRecord key={category.id} category={category} />
