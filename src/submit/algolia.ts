@@ -1,10 +1,11 @@
+"use server";
 import { getTools } from "@/lib/actions/tools";
 import algoliasearch from "algoliasearch";
 
-async function main() {
+export const updateAlgolia = async () => {
   const client = algoliasearch(
-    process.env.ALGOLIA_APP_ID!,
-    process.env.ALGOLIA_ADMIN_API_KEY!,
+    "CZZ39RC5EV",
+    "75c1124d94150815d93181fc9a31724d",
   );
 
   const tools = await getTools();
@@ -19,11 +20,4 @@ async function main() {
     .then(({ objectIDs }) => {
       console.log(objectIDs);
     });
-}
-
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {});
+};

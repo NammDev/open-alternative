@@ -3,6 +3,7 @@ import { Grid } from "@/components/app-ui/Grid";
 import { Intro } from "@/components/app-ui/Intro";
 import { ToolRecord } from "@/components/app-ui/ToolRecord";
 import { getToolsLatest } from "@/lib/actions/tools";
+import UpdateAlgolia from "./updateAlgolia";
 
 const meta = {
   title: "Recently added Open Source Software",
@@ -16,6 +17,7 @@ export default async function CategoriesPage() {
   return (
     <>
       <Intro {...meta} />
+      <UpdateAlgolia />
       <Grid>
         {tools.map((tool) => (
           <ToolRecord key={tool.id} tool={tool} />
