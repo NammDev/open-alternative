@@ -45,10 +45,10 @@ export async function createTool(repository: RepositorySubmit) {
 
 export async function updateToolLicense(repository: RepositorySubmit) {
   const repo = getRepoOwnerAndName(repository.github);
-  const name = (repository.name || repo?.name) as string;
+  const name = repo?.name as string;
 
   const tool = await db.tool.findFirst({
-    where: { name },
+    where: { name: repository.name },
   });
 
   if (tool) {
@@ -65,10 +65,10 @@ export async function updateToolLicense(repository: RepositorySubmit) {
 
 export async function updateToolNoLicense(repository: RepositorySubmit) {
   const repo = getRepoOwnerAndName(repository.github);
-  const name = (repository.name || repo?.name) as string;
+  const name = repo?.name as string;
 
   const tool = await db.tool.findFirst({
-    where: { name },
+    where: { name: repository.name },
   });
 
   if (tool) {
@@ -85,10 +85,10 @@ export async function updateToolNoLicense(repository: RepositorySubmit) {
 
 export async function updateLOC(repository: RepositorySubmit) {
   const repo = getRepoOwnerAndName(repository.github);
-  const name = (repository.name || repo?.name) as string;
+  const name = repo?.name as string;
 
   const tool = await db.tool.findFirst({
-    where: { name },
+    where: { name: repository.name },
   });
 
   if (tool) {

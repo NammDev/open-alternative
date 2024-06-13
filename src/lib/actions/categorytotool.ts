@@ -28,6 +28,5 @@ export const getToolsRelated = async (slug: string) => {
     include: { tool: true },
     distinct: ["toolId"],
     orderBy: { tool: { score: "desc" } },
-    take: 3,
   });
 };
