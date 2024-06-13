@@ -20,7 +20,8 @@ export const Refinements = ({
       <RefinementList attribute="languages" showMoreLimit={256} showMore />
       <RefinementList attribute="topics" showMoreLimit={512} showMore />
 
-      <RangeSlider attribute="stars" />
+      {/* <RangeSlider attribute="stars" /> */}
+      <RangeSlider attribute="linesOfCode" />
       <RangeSlider attribute="forks" />
     </div>
   );

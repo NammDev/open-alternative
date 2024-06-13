@@ -11,13 +11,14 @@ export const updateAlgolia = async () => {
   const tools = await getTools();
   const index = client.initIndex(process.env.ALGOLIA_INDEX_NAME!);
 
-  await index.clearObjects();
-
-  await index
-    .saveObjects(tools, {
-      autoGenerateObjectIDIfNotExist: true,
-    })
-    .then(({ objectIDs }) => {
-      console.log(objectIDs);
-    });
+  Promise.all([
+    // index.clearObjects(),
+    index
+      .saveObjects(tools, {
+        autoGenerateObjectIDIfNotExist: true,
+      })
+      .then(({ objectIDs }) => {
+        console.log(objectIDs);
+      }),
+  ]);
 };

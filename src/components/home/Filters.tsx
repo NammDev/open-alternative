@@ -32,7 +32,7 @@ export const Filters = () => {
     { value: 8, label: "9 per page" },
     { value: 17, label: "18 per page", default: isMobile },
     { value: 35, label: "36 per page" },
-    { value: 120, label: "Full", default: !isMobile },
+    { value: 140, label: "Full", default: !isMobile },
   ];
 
   return (
