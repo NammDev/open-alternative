@@ -82,7 +82,7 @@ function CreateCategoryDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="ml-8 gap-2 text-sm">
+        <Button className="ml-6 gap-2 text-sm">
           <Edit2Icon className="h-4 w-4" />
         </Button>
       </DialogTrigger>
@@ -90,7 +90,7 @@ function CreateCategoryDialog() {
         <DialogHeader>
           <DialogTitle>
             Create
-            <span className={cn("m-1 text-red-500")}>Category</span>
+            <span className={cn("text-red-500")}>Category</span>
             category
           </DialogTitle>
           <DialogDescription>

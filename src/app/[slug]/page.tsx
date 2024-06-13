@@ -23,6 +23,7 @@ import { notFound } from "next/navigation";
 import AddCategoryToToolDialog from "./add-category";
 import AddTechToToolDialog from "./add-tech";
 import EditContentToolDialog from "./edit-content";
+import EditDescriptionDialog from "./edit-description";
 
 export default async function ToolsPage({
   params: { slug },
@@ -101,6 +102,10 @@ export default async function ToolsPage({
                 <AddTechToToolDialog
                   slug={slug}
                   technologiesByTool={technologies}
+                />
+                <EditDescriptionDialog
+                  slug={slug}
+                  description={tool.description || ""}
                 />
                 {tool.content && (
                   <EditContentToolDialog slug={slug} content={tool.content} />

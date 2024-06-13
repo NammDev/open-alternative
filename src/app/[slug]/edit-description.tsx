@@ -27,30 +27,33 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { EditContentSchema, EditContentSchemaType } from "@/lib/schemas/tool";
 import { Textarea } from "@/components/ui/textarea";
-import { editToolContent } from "@/lib/actions/tools";
+import {
+  EditDescriptionSchema,
+  EditDescriptionSchemaType,
+} from "@/lib/schemas/tool";
+import { editToolDescription } from "@/lib/actions/tools";
 
-function EditContentToolDialog({
+function EditDescriptionDialog({
   slug,
-  content,
+  description,
 }: {
   slug: string;
-  content: string;
+  description: string;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const form = useForm<EditContentSchemaType>({
-    resolver: zodResolver(EditContentSchema),
+  const form = useForm<EditDescriptionSchemaType>({
+    resolver: zodResolver(EditDescriptionSchema),
     defaultValues: {
-      content,
+      description,
     },
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (values: EditContentSchemaType) =>
-      editToolContent(values, slug),
+    mutationFn: (values: EditDescriptionSchemaType) =>
+      editToolDescription(values, slug),
     onSuccess: async () => {
       toast.success("Tool updated successfully 🎉");
       router.push("/");
@@ -60,7 +63,7 @@ function EditContentToolDialog({
   });
 
   const onSubmit = useCallback(
-    (values: EditContentSchemaType) => {
+    (values: EditDescriptionSchemaType) => {
       mutate(values);
     },
     [mutate],
@@ -76,22 +79,22 @@ function EditContentToolDialog({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            <span className={cn("text-red-500")}>Edit</span> Content
+            <span className={cn("text-red-500")}>Edit</span> Description
           </DialogTitle>
           <DialogDescription>
-            Write what you know, you think, you like about this opensource.
+            Description of opensource, github page, overall website, etc
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
-              name="content"
+              name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Content</FormLabel>
+                  <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Type content here." {...field} />
+                    <Textarea placeholder="Type description here." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,4 +128,4 @@ function EditContentToolDialog({
   );
 }
 
-export default EditContentToolDialog;
+export default EditDescriptionDialog;

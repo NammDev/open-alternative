@@ -35,3 +35,9 @@ export const EditContentSchema = z.object({
 });
 
 export type EditContentSchemaType = z.infer<typeof EditContentSchema>;
+
+export const EditDescriptionSchema = z.object({
+  description: z.string().min(1).max(200),
+});
+
+export type EditDescriptionSchemaType = z.infer<typeof EditDescriptionSchema>;
