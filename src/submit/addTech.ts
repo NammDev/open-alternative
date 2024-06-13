@@ -9,12 +9,8 @@ type TechnologySubmit = {
 
 const technologies: TechnologySubmit[] = [
   {
-    name: "Upstash",
-    website: "https://upstash.com/",
-  },
-  {
-    name: "Redis",
-    website: "https://redis.io/",
+    name: "NextAuth",
+    website: "https://next-auth.js.org/",
   },
   //   {
   //     name: "",
