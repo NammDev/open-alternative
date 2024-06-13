@@ -36,6 +36,7 @@ export const getToolsLatest = async () => {
     where: { publishedAt: { gte: LATEST_TOOLS_TRESHOLD, lte: new Date() } },
     orderBy: { publishedAt: "desc" },
     include: toolManyPayload,
+    take: 3,
   });
 };
 

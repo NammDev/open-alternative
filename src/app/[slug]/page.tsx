@@ -112,7 +112,7 @@ export default async function ToolsPage({
                 asChild
               >
                 <a
-                  href={tool.website}
+                  href={tool.youtube}
                   target="_blank"
                   rel="nofollow noreferrer"
                 >
