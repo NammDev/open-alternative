@@ -1,17 +1,16 @@
 import { db } from "@/lib/db";
 
 async function main() {
-  await db.technologyToTool.deleteMany();
-  await db.categoryToTools.deleteMany();
-  await db.topicToTool.deleteMany();
-  await db.languageToTool.deleteMany();
-  await db.category.deleteMany();
-  await db.topic.deleteMany();
-  await db.tool.deleteMany();
-  await db.topic.deleteMany();
-  await db.language.deleteMany();
-  await db.technology.deleteMany();
-  // Add more deleteMany calls for other models as needed
+  // await db.technologyToTool.deleteMany();
+  // await db.categoryToTools.deleteMany();
+  // await db.topicToTool.deleteMany();
+  // await db.languageToTool.deleteMany();
+  // await db.category.deleteMany();
+  // await db.topic.deleteMany();
+  // await db.tool.deleteMany();
+  // await db.topic.deleteMany();
+  // await db.language.deleteMany();
+  // await db.technology.deleteMany();
 }
 
 main()
