@@ -61,7 +61,7 @@ function AddCategoryToToolDialog({
     mutationFn: (values: EditToolSchemaType) => editTool(values, slug),
     onSuccess: async () => {
       toast.success("Tool updated successfully 🎉");
-      router.push("/");
+      router.push("/?openalternative%5BsortBy%5D=openalternative_locs_desc");
       setOpen((prev) => !prev);
     },
     onError: () => {},
