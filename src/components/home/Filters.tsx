@@ -16,14 +16,16 @@ export const Filters = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const { results } = useInstantSearch();
 
+  const indexName = process.env.ALGOLIA_INDEX_NAME!;
+
   const sortByItems = [
-    { value: "openalternative", label: "Relevance" },
-    { value: "openalternative_created_desc", label: "Latest" },
-    { value: "openalternative_name_asc", label: "Name" },
-    { value: "openalternative_stars_desc", label: "Stars" },
-    { value: "openalternative_forks_desc", label: "Forks" },
-    { value: "openalternative_lastcommit_desc", label: "Last Commit" },
-    { value: "openalternative_locs_desc", label: "Lines of Codes" },
+    { value: `${indexName}`, label: "Relevance" },
+    { value: `${indexName}_created_desc`, label: "Latest" },
+    { value: `${indexName}_name_asc`, label: "Name" },
+    { value: `${indexName}_stars_desc`, label: "Stars" },
+    { value: `${indexName}_forks_desc`, label: "Forks" },
+    { value: `${indexName}_lastcommit_desc`, label: "Last Commit" },
+    { value: `${indexName}_locs_desc`, label: "Lines of Codes" },
   ];
 
   const hitsPerPageItems = [

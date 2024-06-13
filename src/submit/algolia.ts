@@ -3,12 +3,12 @@ import algoliasearch from "algoliasearch";
 
 async function main() {
   const client = algoliasearch(
-    "CZZ39RC5EV",
-    "75c1124d94150815d93181fc9a31724d",
+    process.env.ALGOLIA_APP_ID!,
+    process.env.ALGOLIA_ADMIN_API_KEY!,
   );
 
   const tools = await getTools();
-  const index = client.initIndex("openalternative");
+  const index = client.initIndex(process.env.ALGOLIA_INDEX_NAME!);
 
   await index.clearObjects();
 

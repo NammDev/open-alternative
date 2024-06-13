@@ -18,7 +18,7 @@ export const Featured = ({
     },
     {
       name: "Product Hunt",
-      url: "https://www.producthunt.com/posts/openalternative",
+      url: "https://www.producthunt.com",
       icon: "/producthunt.svg",
     },
     {
