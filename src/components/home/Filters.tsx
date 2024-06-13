@@ -16,7 +16,7 @@ export const Filters = () => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const { results } = useInstantSearch();
 
-  const indexName = process.env.ALGOLIA_INDEX_NAME!;
+  const indexName = "openalternative";
 
   const sortByItems = [
     { value: `${indexName}`, label: "Relevance" },

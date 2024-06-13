@@ -22,6 +22,7 @@ import { HashIcon, MoveRightIcon, TagIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import AddCategoryToToolDialog from "./add-category";
 import AddTechToToolDialog from "./add-tech";
+import EditContentToolDialog from "./edit-content";
 
 export default async function ToolsPage({
   params: { slug },
@@ -101,6 +102,9 @@ export default async function ToolsPage({
                   slug={slug}
                   technologiesByTool={technologies}
                 />
+                {tool.content && (
+                  <EditContentToolDialog slug={slug} content={tool.content} />
+                )}
               </div>
             )}
             {tool.youtube && (
@@ -137,6 +141,16 @@ export default async function ToolsPage({
               loading="eager"
               className="aspect-video h-auto w-full rounded-md border object-cover object-top"
             />
+          )}
+
+          {tool.content && (
+            <Prose>
+              <div
+                className="prose !font-normal !tracking-normal !text-secondary"
+                style={{ viewTransitionName: "tool-content" }}
+                dangerouslySetInnerHTML={{ __html: tool.content }}
+              />
+            </Prose>
           )}
 
           {/* Categories */}

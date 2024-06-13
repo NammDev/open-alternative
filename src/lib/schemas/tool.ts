@@ -29,3 +29,9 @@ export const EditToolTechnologySchema = z.object({
 export type EditToolTechnologySchemaType = z.infer<
   typeof EditToolTechnologySchema
 >;
+
+export const EditContentSchema = z.object({
+  content: z.string().min(1).max(500),
+});
+
+export type EditContentSchemaType = z.infer<typeof EditContentSchema>;

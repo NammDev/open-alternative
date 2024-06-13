@@ -1,5 +1,6 @@
 "use server";
 
+import { EditContentSchema, EditContentSchemaType } from "./../schemas/tool";
 import { Prisma } from "@prisma/client";
 import { db } from "../db";
 import { LATEST_TOOLS_TRESHOLD } from "../constants";
@@ -336,6 +337,28 @@ export async function editToolTech(
           }),
         ),
       },
+    },
+  });
+}
+
+export async function editToolContent(
+  form: EditContentSchemaType,
+  slug: string,
+) {
+  const tool = await db.tool.findUnique({
+    where: { slug },
+  });
+  if (!tool) throw new Error(`Tool with slug ${slug} not found`);
+
+  const parsedBody = EditContentSchema.safeParse(form);
+  if (!parsedBody.success) throw new Error("bad request");
+
+  const content = parsedBody.data.content ?? [];
+
+  return await db.tool.update({
+    where: { slug },
+    data: {
+      content,
     },
   });
 }

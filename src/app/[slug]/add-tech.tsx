@@ -154,7 +154,7 @@ function AddTechToToolDialog({
         <DialogFooter className="mt-2">
           <DialogClose asChild>
             <Button
-              className="bg-slate-100"
+              className="bg-background"
               type="button"
               onClick={() => {
                 form.reset();
