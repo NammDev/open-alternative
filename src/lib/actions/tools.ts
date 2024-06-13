@@ -9,6 +9,8 @@ import {
   CreateToolSchema,
   CreateToolSchemaType,
   EditToolSchemaType,
+  EditToolTechnologySchemaType,
+  EditToolTechnologySchema,
 } from "../schemas/tool";
 import { getRepoOwnerAndName } from "../utils";
 import { graphql } from "@octokit/graphql";
@@ -284,6 +286,54 @@ export async function editTool(form: EditToolSchemaType, slug: string) {
             },
           },
         })),
+      },
+    },
+  });
+}
+
+export async function editToolTech(
+  form: EditToolTechnologySchemaType,
+  slug: string,
+) {
+  const tool = await db.tool.findUnique({
+    where: { slug },
+  });
+  if (!tool) throw new Error(`Tool with slug ${slug} not found`);
+
+  const parsedBody = EditToolTechnologySchema.safeParse(form);
+  if (!parsedBody.success) throw new Error("bad request");
+
+  const technologies =
+    parsedBody.data.technologies?.map((id) => ({ id })) ?? [];
+
+  const existTechnologies = await db.technology.findMany({
+    where: {
+      id: {
+        in: technologies.map(({ id }) => id),
+      },
+    },
+  });
+
+  return await db.tool.update({
+    where: { slug },
+    data: {
+      technologies: {
+        deleteMany: {},
+        connectOrCreate: existTechnologies.map(
+          ({ id, name, slug, website, description, faviconUrl }) => ({
+            where: {
+              toolId_technologyId: { toolId: tool.id, technologyId: id },
+            },
+            create: {
+              technology: {
+                connectOrCreate: {
+                  where: { slug },
+                  create: { name, slug, website, description, faviconUrl },
+                },
+              },
+            },
+          }),
+        ),
       },
     },
   });

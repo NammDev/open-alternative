@@ -20,7 +20,8 @@ import { getTool } from "@/lib/actions/tools";
 import { getTopics } from "@/lib/actions/topictotool";
 import { HashIcon, MoveRightIcon, TagIcon } from "lucide-react";
 import { notFound } from "next/navigation";
-import EditToolDialog from "./edit-tool";
+import AddCategoryToToolDialog from "./add-category";
+import AddTechToToolDialog from "./add-tech";
 
 export default async function ToolsPage({
   params: { slug },
@@ -92,7 +93,14 @@ export default async function ToolsPage({
                     View Website
                   </a>
                 </Button>
-                <EditToolDialog slug={slug} categoriesByTool={categories} />
+                <AddCategoryToToolDialog
+                  slug={slug}
+                  categoriesByTool={categories}
+                />
+                <AddTechToToolDialog
+                  slug={slug}
+                  technologiesByTool={technologies}
+                />
               </div>
             )}
             {tool.youtube && (

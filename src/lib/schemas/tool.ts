@@ -21,3 +21,11 @@ export const EditToolSchema = z.object({
 });
 
 export type EditToolSchemaType = z.infer<typeof EditToolSchema>;
+
+export const EditToolTechnologySchema = z.object({
+  technologies: z.array(z.string()).optional(),
+});
+
+export type EditToolTechnologySchemaType = z.infer<
+  typeof EditToolTechnologySchema
+>;

@@ -34,7 +34,7 @@ import { getCategories } from "@/lib/actions/categories";
 import { getCategoriesTool } from "@/lib/actions/categorytotool";
 import { useRouter } from "next/navigation";
 
-function EditToolDialog({
+function AddCategoryToToolDialog({
   slug,
   categoriesByTool,
 }: {
@@ -84,12 +84,10 @@ function EditToolDialog({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            <span className={cn("m-1 text-red-500")}>Add</span> Categories &
-            Technologies
+            <span className={cn("m-1 text-red-500")}>Add</span> Categories
           </DialogTitle>
           <DialogDescription>
             Categories is something like admin, learning, ecommerce, etc <br />
-            Technologies is something like prisma, supabase, etc
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -99,12 +97,7 @@ function EditToolDialog({
               name="categories"
               render={() => (
                 <FormItem className="mb-4 w-full">
-                  <div className="mb-4">
-                    <FormLabel className="text-base">Categories</FormLabel>
-                    <FormDescription>
-                      Select the category you want to add open source.
-                    </FormDescription>
-                  </div>
+                  <div className="mb-4"></div>
                   <div className="grid w-full grid-cols-2 gap-4 lg:grid-cols-3">
                     {categories.map((category) => (
                       <FormField
@@ -178,4 +171,4 @@ function EditToolDialog({
   );
 }
 
-export default EditToolDialog;
+export default AddCategoryToToolDialog;
