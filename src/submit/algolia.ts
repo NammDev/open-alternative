@@ -12,7 +12,7 @@ export const updateAlgolia = async () => {
   const index = client.initIndex(process.env.ALGOLIA_INDEX_NAME!);
 
   Promise.all([
-    // index.clearObjects(),
+    index.clearObjects(),
     index
       .saveObjects(tools, {
         autoGenerateObjectIDIfNotExist: true,

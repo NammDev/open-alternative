@@ -9,13 +9,13 @@ type TechnologySubmit = {
 
 const technologies: TechnologySubmit[] = [
   {
-    name: "NextAuth",
-    website: "https://next-auth.js.org/",
+    name: "Python",
+    website: "https://www.python.org/",
   },
-  //   {
-  //     name: "",
-  //     website: "",
-  //   },
+  {
+    name: "GastbyJS",
+    website: "https://www.gatsbyjs.com/",
+  },
   //   {
   //     name: "",
   //     website: "",
