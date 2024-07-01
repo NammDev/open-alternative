@@ -42,7 +42,6 @@ export const ToolRecord = ({ className, tool, ...props }: ToolRecordProps) => {
   return (
     <Link
       href={`/${tool.slug}`}
-      target="_blank"
       className={cx("group flex", className)}
       {...props}
     >
