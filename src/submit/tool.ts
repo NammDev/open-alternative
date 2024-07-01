@@ -94,7 +94,7 @@ export async function updateLOC(repository: RepositorySubmit) {
   if (tool) {
     if (tool.linesOfCode === 0) {
       try {
-        await updateLocsForTool(repo?.owner, name, tool.id);
+        await updateLocsForTool(repo?.owner, tool.name, tool.id);
         console.log(`Updated tool ${name}`);
       } catch (error) {
         console.log("Error in update LOC", name);

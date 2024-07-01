@@ -592,40 +592,10 @@ import {
 
 const repositories = [
   {
-    name: "Promptopia",
-    website: "https://github.com/NammDev/promptopia",
-    github: "https://github.com/adrianhajdin/project_next_14_ai_prompt_sharing",
-    youtube: "https://www.youtube.com/watch?v=wm5gMKuwSYk",
-  },
-  {
-    name: "CarShowcase",
-    website: "https://github.com/NammDev/car_showcase",
-    github: "https://github.com/adrianhajdin/project_next13_car_showcase",
-    youtube: "https://www.youtube.com/watch?v=pUNSHPyVryU",
-  },
-  {
-    name: "Flexibble",
-    website: "https://github.com/NammDev/flexibble",
-    github: "https://github.com/adrianhajdin/project_nextjs13_flexibble",
-    youtube: "https://www.youtube.com/watch?v=986hztrfaSQ",
-  },
-  {
-    name: "ThreadsClone",
-    website: "https://github.com/NammDev/threads",
-    github: "https://github.com/adrianhajdin/threads",
-    youtube: "https://www.youtube.com/watch?v=O5cmLDVTgAs",
-  },
-  {
-    name: "RedditClone",
-    website: "https://github.com/NammDev/breadit",
-    github: "https://github.com/joschan21/breadit",
-    youtube: "https://www.youtube.com/watch?v=mSUKMfmLAt0",
-  },
-  {
-    name: "Quill",
-    website: "https://github.com/NammDev/quill",
-    github: "https://github.com/joschan21/quill",
-    youtube: "https://www.youtube.com/watch?v=ucX2zXAZ1I0",
+    name: "CalExpert",
+    website: "https://experts.cal.com/",
+    github: "https://github.com/calcom/platform-starter-kit",
+    youtube: "",
   },
 ];
 
